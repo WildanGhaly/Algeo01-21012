@@ -1,5 +1,6 @@
+package Fungsi;
 public class Menu {
-    public static void main(String[] args) {
+    public void tampilanMenu() {
         System.out.println("Menu");
         System.out.println("1. Sistem Persamaan Linier");
         System.out.println("2. Determinan");
