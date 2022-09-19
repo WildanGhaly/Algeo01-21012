@@ -1,3 +1,4 @@
+package Fungsi;
 import java.util.Scanner;
 
 public class Determinan {
@@ -56,7 +57,7 @@ public class Determinan {
         return sum;
     }
 
-    public static void main(String[] args) {
+    public void pencarianDeterminan() {
 
         Scanner scan = new Scanner(System.in);
 
