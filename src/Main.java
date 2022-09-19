@@ -8,24 +8,94 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         Menu menu = new Menu();
-        menu.tampilanMenu();
-
-        System.out.print("\nPilihan: ");
-        int Pilihan = scan.nextInt();
 
         while (true){
+            menu.tampilanMenu();
+            System.out.print("\nPilihan: ");
+            int Pilihan = scan.nextInt();
             if (Pilihan == 1){
                 // Jika dipilih SPL
-                // ...
+                while (true){
+                    menu.tampilanSubMenu1();
+                    System.out.print("\nPilihan sub: ");
+                    int pilihanSub = scan.nextInt();
+
+                    if (pilihanSub == 1){
+                        // Jika dipilih metode eliminasi Gauss
+                        // ...
+
+                        break;
+                    } else if (pilihanSub == 2){
+                        // Jika dipilih metode eliminasi Gauss-Jordan
+                        // ...
+
+                        break;
+                    } else if (pilihanSub == 3){
+                        // Jika dipilih metode matriks balikan
+                        // ...
+
+                        break;
+                    } else if (pilihanSub == 4){
+                        // Jika dipilih Kaidah Cramer
+                        // ...
+
+                        break;
+                    } else {
+                        System.out.println("Masukan tidak valid, harap ulangi!");
+                    }
+                }
 
 
             } else if (Pilihan == 2){
-                Determinan determinan = new Determinan();
-                determinan.pencarianDeterminan();
+                // Jika dipilih Determinan
+                while (true){
+                    menu.tampilanSubMenu2();
+                    System.out.print("\nPilihan sub: ");
+                    int pilihanSub = scan.nextInt(); 
+                    if (pilihanSub == 1){
+                        // Jika dipilih metode eliminasi Gauss
+                        // ...
+
+                        break;
+                        
+                    } else if (pilihanSub == 2){
+                        // Jika dipilih metode eliminasi Gauss-Jordan
+                        // ...
+
+                        break;
+
+                    } else if (pilihanSub == 3){
+                        // Pencarian dengan Ekspansi Kofaktor
+                        Determinan determinan = new Determinan();
+                        determinan.pencarianDeterminan();
+                        break;
+
+                    } else {
+                        System.out.println("Masukkan tidak valid, harap ulangi!");
+                    }
+                }
 
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
-                // ...
+                while (true){
+                    menu.tampilanSubMenu3();
+                    System.out.println("\nPilihan sub: ");
+                    int pilihanSub = scan.nextInt();
+
+                    if (pilihanSub == 1){
+                        // Metode adjoint
+                        // ...
+
+                        break;
+                    } else if (pilihanSub == 2) {
+                        // Metode Gauss-Jordan
+                        // ...
+
+                        break;
+                    } else {
+                        System.out.println("Masukan tidak valid, harap ulangi!");
+                    }
+                }
 
 
             } else if (Pilihan == 4){
