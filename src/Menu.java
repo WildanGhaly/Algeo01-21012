@@ -1,4 +1,4 @@
-package Fungsi;
+
 public class Menu {
     public void tampilanMenu() {
         System.out.println("Menu");
@@ -28,7 +28,7 @@ public class Menu {
     public void tampilanSubMenu3() {
         System.out.println("Sub menu");
         System.out.println("1. Metode adjoin");
-        System.out.println("2. Metode eliminasi Gauss-Jordan");
+        System.out.println("2. Metode Operasi Baris Elementer");
     }
 
     

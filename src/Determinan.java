@@ -1,5 +1,4 @@
-package Fungsi;
-import java.util.Scanner;
+
 
 public class Determinan {
 
@@ -55,28 +54,6 @@ public class Determinan {
         }
 
         return sum;
-    }
-
-    public void pencarianDeterminan() {
-
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("Masukkan dimensi dari matriks: ");
-        int dimensi = scan.nextInt();
-
-        double[][] matriks = new double[dimensi][dimensi];
-
-        System.out.println("Masukkan nilai matriks dimensi " + dimensi);
-        for (int i = 0 ; i < dimensi ; i++){
-            for (int j = 0 ; j < dimensi ; j++){
-                matriks[i][j] = scan.nextDouble();
-            }
-        }
-
-        System.out.println("Nilai determinannya adalah: " + DeterminanKofaktor(matriks));
-
-
-        scan.close();
     }
 
 }

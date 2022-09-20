@@ -1,4 +1,4 @@
-// Berisikan fungsi untuk menyelesaikan SPL dengan metode Gauss
+
 
 
 import java.util.Scanner;

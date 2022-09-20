@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import Fungsi.*;
 
 
 public class Main {
@@ -12,7 +11,9 @@ public class Main {
         while (true){
             menu.tampilanMenu();
             System.out.print("\nPilihan: ");
+
             int Pilihan = scan.nextInt();
+
             if (Pilihan == 1){
                 // Jika dipilih SPL
                 while (true){
@@ -48,10 +49,22 @@ public class Main {
 
             } else if (Pilihan == 2){
                 // Jika dipilih Determinan
+                System.out.print("Masukkan dimensi dari matriks: ");
+                int dimensi = scan.nextInt();
+                double[][] matriks = new double[dimensi][dimensi];
+                System.out.println("Masukkan nilai matriks dimensi " + dimensi);
+                for (int i = 0 ; i < dimensi ; i++){
+                    for (int j = 0 ; j < dimensi ; j++){
+                        matriks[i][j] = scan.nextDouble();
+                    }
+                }
+
                 while (true){
+                    
                     menu.tampilanSubMenu2();
                     System.out.print("\nPilihan sub: ");
                     int pilihanSub = scan.nextInt(); 
+
                     if (pilihanSub == 1){
                         // Jika dipilih metode eliminasi Gauss
                         // ...
@@ -66,8 +79,8 @@ public class Main {
 
                     } else if (pilihanSub == 3){
                         // Pencarian dengan Ekspansi Kofaktor
-                        Determinan determinan = new Determinan();
-                        determinan.pencarianDeterminan();
+                        double det = Determinan.DeterminanKofaktor(matriks);
+                        System.out.println("Nilai determinannya adalah: " + det);
                         break;
 
                     } else {
@@ -92,6 +105,7 @@ public class Main {
                         // ...
 
                         break;
+                        
                     } else {
                         System.out.println("Masukan tidak valid, harap ulangi!");
                     }
