@@ -1,6 +1,18 @@
+
 public class Crammer {
     
-    public static void main(String[] args) {
-        
+    public static double crammer(double[][] Matriks) {
+    
+
+        return 0;
     }
 }
+
+
+
+
+
+
+
+
+
