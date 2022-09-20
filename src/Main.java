@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-
+/* Program Main untuk dijalankan saat demo */
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,8 @@ public class Main {
         Menu menu = new Menu();
 
         while (true){
+            // Melakukan pengulangan sampai input valid (pilihan antara 1 sampai 7)
+
             menu.tampilanMenu();
             System.out.print("\nPilihan: ");
 
@@ -17,6 +19,8 @@ public class Main {
             if (Pilihan == 1){
                 // Jika dipilih SPL
                 while (true){
+                    // Melakukan pengulangan input sampai input valid
+
                     menu.tampilanSubMenu1();
                     System.out.print("\nPilihan sub: ");
                     int pilihanSub = scan.nextInt();
@@ -43,12 +47,18 @@ public class Main {
                         break;
                     } else {
                         System.out.println("Masukan tidak valid, harap ulangi!");
+                        // Pesan yang dikeluarkan saat input tidak valid
+
                     }
                 }
 
 
             } else if (Pilihan == 2){
-                // Jika dipilih Determinan
+                /* Jika dipilih Determinan
+                   Akan dibaca matriks dengan dimensi masukan dari keyboard
+                   Lalu setiap variabel matriks akan diinput dan akan dihasilkan 
+                   matriks tersebut dengan salah satu dari 3 metode */
+
                 System.out.print("Masukkan dimensi dari matriks: ");
                 int dimensi = scan.nextInt();
                 double[][] matriks = new double[dimensi][dimensi];
@@ -60,7 +70,8 @@ public class Main {
                 }
 
                 while (true){
-                    
+                    // Melakukan pengulangan sampai input benar (subPilihan 1-3)
+
                     menu.tampilanSubMenu2();
                     System.out.print("\nPilihan sub: ");
                     int pilihanSub = scan.nextInt(); 
@@ -85,12 +96,17 @@ public class Main {
 
                     } else {
                         System.out.println("Masukkan tidak valid, harap ulangi!");
+                        // Pesan yang dikeluarkan saat input tidak valid
+
                     }
                 }
 
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
+
                 while (true){
+                    // Melakukan pengulangan input sampai input valid
+
                     menu.tampilanSubMenu3();
                     System.out.println("\nPilihan sub: ");
                     int pilihanSub = scan.nextInt();
@@ -108,6 +124,8 @@ public class Main {
                         
                     } else {
                         System.out.println("Masukan tidak valid, harap ulangi!");
+                        // Pesan yang dikeluarkan saat input tidak valid
+
                     }
                 }
 
@@ -128,14 +146,25 @@ public class Main {
 
 
             } else if (Pilihan == 7){
-                break; // Keluar loop
+                break; // Keluar loop dan program selesai
+
                 
             } else {
                 System.out.println("Masukan tidak valid, harap ulangi!");
+                // Pesan yang dikeluarkan saat input tidak valid
+
             }
         
         }
 
         scan.close();
+        // Menutup fungsi scanner
+
     }
 }
+
+
+
+
+
+
