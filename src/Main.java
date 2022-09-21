@@ -103,30 +103,58 @@ public class Main {
 
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
+                System.out.print("Masukkan dimensi matriks: ");
+                int dimensi = scan.nextInt();
 
-                while (true){
-                    // Melakukan pengulangan input sampai input valid
+                // Menginput nilai matriks:
+                double[][] matriks = new double[dimensi][dimensi];
+                for (int i = 0 ; i < dimensi ; i++){
+                    for (int j = 0 ; j < dimensi ; j++){
+                        matriks[i][j] = scan.nextDouble();
+                    }
+                }
+                // Maka saat ini sudah didapatkan nilai matriksnya
 
-                    menu.tampilanSubMenu3();
-                    System.out.println("\nPilihan sub: ");
-                    int pilihanSub = scan.nextInt();
+                if (Determinan.DeterminanKofaktor(matriks)==0){
+                    System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
+                } else {
+                    
+                    while (true){
 
-                    if (pilihanSub == 1){
-                        // Metode adjoint
-                        // ...
+                        // Melakukan pengulangan input sampai input valid
+                        menu.tampilanSubMenu3();
+                        System.out.print("\nPilihan sub: ");
+                        int pilihanSub = scan.nextInt();
 
-                        break;
-                    } else if (pilihanSub == 2) {
-                        // Metode Gauss-Jordan
-                        // ...
+                        if (pilihanSub == 1){
+                            // Metode adjoint
+                            System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
+                            double[][] balikan = Balikan.balikanKofaktor(matriks);
+                            // Saat ini matriks balikan sudah didapatkan
 
-                        break;
-                        
-                    } else {
-                        System.out.println("Masukan tidak valid, harap ulangi!");
-                        // Pesan yang dikeluarkan saat input tidak valid
+                            // Cetak matriks
+                            for (int i = 0 ; i < matriks.length ; i++){
+                                for (int j = 0 ; j < matriks.length ; j++){
+                                    System.out.print(balikan[i][j] + " ");
+                                }
+                                System.out.println("\n");
+                            }
+
+                            break;
+                        } else if (pilihanSub == 2) {
+                            // Metode Gauss-Jordan
+                            // ...
+
+                            break;
+                            
+                        } else {
+                            System.out.println("Masukan tidak valid, harap ulangi!");
+                            // Pesan yang dikeluarkan saat input tidak valid
+
+                        }
 
                     }
+
                 }
 
 
