@@ -133,12 +133,7 @@ public class Main {
                             // Saat ini matriks balikan sudah didapatkan
 
                             // Cetak matriks
-                            for (int i = 0 ; i < matriks.length ; i++){
-                                for (int j = 0 ; j < matriks.length ; j++){
-                                    System.out.print(balikan[i][j] + " ");
-                                }
-                                System.out.println("\n");
-                            }
+                            Primitive.displayMatrix(balikan);
 
                             break;
                         } else if (pilihanSub == 2) {
