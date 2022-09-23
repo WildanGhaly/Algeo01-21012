@@ -14,9 +14,9 @@ public class Primitive {
         for (int i = 0 ; i < m.length ; i++){
             System.out.print(m[i][0]);
             for (int j = 1 ; j < m[0].length ; j++){
-                System.out.println(" " + m[i][j]);
+                System.out.print(" " + m[i][j]);
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 
@@ -94,6 +94,9 @@ public class Primitive {
         return uji;
 
     }
+
+
+
 
 
 
