@@ -1,4 +1,6 @@
 public class Primitive {
+    /* File ini berisi fungsi-fungsi primitif matrix yang kemungkinan dibutuhkan di file lain
+     */
 
     public static void displayMatrix(double[][] m){
         /* I.S. m terdefinisi
@@ -95,7 +97,17 @@ public class Primitive {
 
     }
 
-
+    public static double[][] multiplyByConst (double[][] m, double x){
+        /* Mengirimkan hasil perkalian setiap elemen m dengan x
+         */
+        double[][] mBaru = m.clone();
+        for (int i = 0 ; i < m.length ; i++){
+            for (int j = 0 ; j < m.length ; j++){
+                mBaru[i][j] *= m[i][j];
+            }
+        }
+        return mBaru;
+    }
 
 
 
