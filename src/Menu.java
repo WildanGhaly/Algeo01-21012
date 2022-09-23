@@ -37,9 +37,14 @@ public class Menu {
         System.out.println("Sub menu");
         System.out.println("1. Metode adjoin");
         System.out.println("2. Metode Operasi Baris Elementer");
+        System.out.println("3. Mengecek kebenaran matriks balikan");
     }
 
-    
+    public void batas(){
+        /* Menampilkan batas berupa garis pada layar */
+        System.out.println("=================================================");
+        System.out.println("=================================================");
+    }
 
 }
 
