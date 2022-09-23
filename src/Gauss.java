@@ -5,21 +5,63 @@ import java.util.Scanner;
 
 
 public class Gauss {
-    public void jadiSatu (double[][] A, double[] B){ //A berbentuk matrix
-        int N = B.length; //N merupakan banyaknya SPL
+    
+    public static double[][] jadiSatu (double[][] A, double[] B){ 
+        /* prekondisi : matriks A yang diterima sudah dalam bentuk persegi
+         * mengembalikan nilai matriks dengan dimensi A[i][j+1] 
+         * matriks dikembalikan dalam bentuk gabungan A dan B
+         */
 
-        /*** Penentuan yang bernilai bukan 0 ***/
-        for (int i = 0 ; i < N ; i++){
-            
+        double[][] merge = new double[A.length][A.length + 1];
+        for (int i = 0 ; i < A.length ; i++){
+            for (int j = 0 ; j <= A.length ; j++){
+                if (j == A.length){
+                    merge[i][j] = B[i];
+                } else {
+                    merge[i][j] = A[i][j];
+                }
+            }
         }
+
+        return merge;
     }
 
+
+
     
+    public static double[][] gauss (double[][] m){
+        
+
+
+        return m;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in); //Membuka fungsi scanner
+        Scanner scan = new Scanner(System.in);
+        int dimensi = scan.nextInt();
+        double[][] matriks = new double[dimensi][dimensi];
+
+        for (int i = 0 ; i < dimensi ; i++){
+            for (int j = 0 ; j < dimensi ; j++){
+                matriks[i][j] = scan.nextDouble();
+            }
+        }
 
 
-        scan.close(); //Menutup fungsi scanner
+        Primitive.displayMatrix(gauss(matriks));
+
+
+        scan.close();
     }
     
 }
