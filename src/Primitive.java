@@ -1,5 +1,5 @@
 public class Primitive {
-    /* File ini berisi fungsi-fungsi primitif matrix
+    /* File ini berisi fungsi-fungsi primitif matrix yang kemungkinan dibutuhkan di file lain
      */
 
     public static void displayMatrix(double[][] m){
@@ -109,7 +109,7 @@ public class Primitive {
         return mBaru;
     }
 
-    
+
 
 
 }
