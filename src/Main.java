@@ -1,10 +1,9 @@
-import java.util.Scanner;
+
 
 /* Program Main untuk dijalankan saat demo */
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
         Menu menu = new Menu();
 
@@ -14,7 +13,7 @@ public class Main {
             menu.tampilanMenu();
             System.out.print("\nPilihan: ");
 
-            int Pilihan = scan.nextInt();
+            int Pilihan = Input.pil();
 
             if (Pilihan == 1){
                 // Jika dipilih SPL
@@ -23,7 +22,7 @@ public class Main {
 
                     menu.tampilanSubMenu1();
                     System.out.print("\nPilihan sub: ");
-                    int pilihanSub = scan.nextInt();
+                    int pilihanSub = Input.pil();
 
                     if (pilihanSub == 1){
                         // Jika dipilih metode eliminasi Gauss
@@ -59,22 +58,24 @@ public class Main {
                    Lalu setiap variabel matriks akan diinput dan akan dihasilkan 
                    matriks tersebut dengan salah satu dari 3 metode */
                 menu.batas();
+
                 System.out.print("Masukkan dimensi dari matriks: ");
-                int dimensi = scan.nextInt();
+                int dimensi = Input.pil();
+                // Melakukan input pilihan
+
+                // Input matriks :
                 double[][] matriks = new double[dimensi][dimensi];
                 System.out.println("Masukkan nilai matriks dimensi " + dimensi);
-                for (int i = 0 ; i < dimensi ; i++){
-                    for (int j = 0 ; j < dimensi ; j++){
-                        matriks[i][j] = scan.nextDouble();
-                    }
-                }
+                matriks = Input.inputMatriks(dimensi, dimensi);
+                // menerima masukan dari keyboard untuk membentuk matriks
+                // matriks akan tersimpan dalam variabel "matriks"
 
                 while (true){
                     // Melakukan pengulangan sampai input benar (subPilihan 1-3)
                     menu.batas();
                     menu.tampilanSubMenu2();
                     System.out.print("\nPilihan sub: ");
-                    int pilihanSub = scan.nextInt(); 
+                    int pilihanSub = Input.pil(); 
 
                     if (pilihanSub == 1){
                         // Jika dipilih metode eliminasi Gauss
@@ -107,17 +108,16 @@ public class Main {
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
                 menu.batas();
+                
                 System.out.print("Masukkan dimensi matriks: ");
-                int dimensi = scan.nextInt();
+                int dimensi = Input.pil();
+                // input pilihan
 
-                // Menginput nilai matriks:
+                // Input matriks:
                 double[][] matriks = new double[dimensi][dimensi];
-                for (int i = 0 ; i < dimensi ; i++){
-                    for (int j = 0 ; j < dimensi ; j++){
-                        matriks[i][j] = scan.nextDouble();
-                    }
-                }
-                // Maka saat ini sudah didapatkan nilai matriksnya
+                matriks = Input.inputMatriks(dimensi, dimensi);
+                // menerima masukan dari keyboard untuk membentuk matriks
+                // matriks akan tersimpan dalam variabel "matriks"
 
                 menu.batas();
 
@@ -131,7 +131,7 @@ public class Main {
                         // Melakukan pengulangan input sampai input valid
                         menu.tampilanSubMenu3();
                         System.out.print("\nPilihan sub: ");
-                        int pilihanSub = scan.nextInt();
+                        int pilihanSub = Input.pil();
 
                         if (pilihanSub == 1){
                             // Metode adjoint
@@ -153,13 +153,13 @@ public class Main {
                             
                         } else if (pilihanSub == 3) { 
                             menu.batas();
+
+                            // Input inverse matriks:
                             System.out.println("Masukkan nilai inverse matriks dimensi " + dimensi + " x " + dimensi);
                             double[][] invMatriks = new double[dimensi][dimensi];
-                            for (int i = 0 ; i < dimensi ; i++){
-                                for (int j = 0 ; j < dimensi ; j++){
-                                    invMatriks[i][j] = scan.nextDouble();
-                                }
-                            }
+                            invMatriks = Input.inputMatriks(dimensi, dimensi);
+                            // menerima masukan dari keyboard untuk membentuk matriks
+                            // inverse matriks yang ingin di cek akan tersimpan dalam variabel "invMatriks"
                             // Saat ini nilai inverse matriks sudah terinput
 
                             menu.batas();
@@ -221,8 +221,6 @@ public class Main {
         
         }
 
-        scan.close();
-        // Menutup fungsi scanner
 
     }
 }
