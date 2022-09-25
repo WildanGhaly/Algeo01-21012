@@ -20,12 +20,9 @@ public class Main {
 
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
-
-
-                while (true){
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
+                    while (true){
                     // Melakukan pengulangan input sampai input valid
 
                     menu.tampilanSubMenu1();
@@ -61,6 +58,10 @@ public class Main {
                     }
                 }
 
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
 
             } else if (Pilihan == 2){
                 /* Jika dipilih Determinan
@@ -70,24 +71,20 @@ public class Main {
 
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
 
-                menu.batas();
+                    int dimensi = Input.inputDimensi();
+                    // Melakukan input pilihan
 
-                System.out.print("Masukkan dimensi dari matriks: ");
-                int dimensi = Input.pil();
-                // Melakukan input pilihan
+                    // Input matriks :
+                    double[][] matriks = new double[dimensi][dimensi];
+                    System.out.println("Masukkan nilai matriks berdimensi " + dimensi);
+                    matriks = Input.inputMatriks(dimensi, dimensi);
+                    // menerima masukan dari keyboard untuk membentuk matriks
+                    // matriks akan tersimpan dalam variabel "matriks"
 
-                // Input matriks :
-                double[][] matriks = new double[dimensi][dimensi];
-                System.out.println("Masukkan nilai matriks dimensi " + dimensi);
-                matriks = Input.inputMatriks(dimensi, dimensi);
-                // menerima masukan dari keyboard untuk membentuk matriks
-                // matriks akan tersimpan dalam variabel "matriks"
-
-                while (true){
+                    while (true){
                     // Melakukan pengulangan sampai input benar (subPilihan 1-3)
                     menu.batas();
                     menu.tampilanSubMenu2();
@@ -122,32 +119,35 @@ public class Main {
                     }
                 }
 
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
+
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
 
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
-                menu.batas();
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
                 
-                System.out.print(">> Masukkan dimensi matriks: ");
-                int dimensi = Input.pil();
-                // input pilihan
+                    // Melakukan input pada dimensi matriks
+                    int dimensi = Input.inputDimensi();
 
-                // Input matriks:
-                double[][] matriks = new double[dimensi][dimensi];
-                matriks = Input.inputMatriks(dimensi, dimensi);
-                // menerima masukan dari keyboard untuk membentuk matriks
-                // matriks akan tersimpan dalam variabel "matriks"
 
-                menu.batas();
+                    // Input matriks:
+                    double[][] matriks = new double[dimensi][dimensi];
+                    matriks = Input.inputMatriks(dimensi, dimensi);
+                    // menerima masukan dari keyboard untuk membentuk matriks
+                    // matriks akan tersimpan dalam variabel "matriks"
 
-                if (Determinan.DeterminanKofaktor(matriks)==0){
-                    System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
                     menu.batas();
-                } else {
+
+                    if (Determinan.DeterminanKofaktor(matriks)==0){
+                        System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
+                        menu.batas();
+                    } else {
                     
                     while (true){
 
@@ -217,29 +217,36 @@ public class Main {
 
                 }
 
-
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
+            
             } else if (Pilihan == 4){
                 // Jika dipilih Interpolasi Polinom
 
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
-
-                // ...
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
+                    // ...  
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
 
             } else if (Pilihan == 5){
                 // Jika dipilih Interpolasi Bicubic
 
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
-
-
-                // ...
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
+                    // ...  
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
 
 
             } else if (Pilihan == 6){
@@ -247,16 +254,31 @@ public class Main {
 
                  // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                /* 
-                 * ...
-                 */
-
-
-                // ...
+                if (pilInput == 1){
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
+                    // ...  
+                } else if (pilInput == 2){
+                    /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
+                    // ...
+                }
 
 
             } else if (Pilihan == 7){
-                break; // Keluar loop dan program selesai
+                System.out.println("|||||||||||||   |||     |||       ||||||       ||||||   |||   |||  |||| ");
+                System.out.println("     |||        |||     |||      |||  |||      ||| |||  |||   ||| |||   ");
+                System.out.println("     |||        |||||||||||     ||||||||||     |||  ||| |||   ||||||    ");
+                System.out.println("     |||        |||     |||    |||      |||    |||   ||||||   ||| |||   ");
+                System.out.println("     |||        |||     |||   |||        |||   |||    |||||   |||  |||| ");
+                System.out.println();
+                System.out.println("|||       |||   |||||||||||   |||     |||  ");
+                System.out.println("  |||   |||     |||     |||   |||     |||  ");
+                System.out.println("    |||||       |||     |||   |||     |||  ");
+                System.out.println("     |||        |||     |||   |||     |||  ");
+                System.out.println("     |||        |||||||||||   |||||||||||  ");
+
+
+                break; 
+                // Keluar loop dan program selesai
 
                 
             } else {
