@@ -18,5 +18,25 @@ public class Input {
         return m;
     }
 
+    public static int pilihanInput(){
+        int pilInput;
+        while (true){
+            System.out.println("Pilihan masukan input: ");
+            System.out.println("1. Melalui keyboard");
+            System.out.println("2. Melalui import file");
+            System.out.print(">> Pilihan: ");
+            pilInput = scan.nextInt();
+            if ((pilInput == 1) || (pilInput == 2)){
+                break;
+            }
+        }
+        return pilInput;
+    }
+
+
+
+
+
+
     
 }

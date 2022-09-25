@@ -11,18 +11,28 @@ public class Main {
             // Melakukan pengulangan sampai input valid (pilihan antara 1 sampai 7)
 
             menu.tampilanMenu();
-            System.out.print("\nPilihan: ");
+            System.out.print("\n>> Pilihan: ");
 
             int Pilihan = Input.pil();
 
             if (Pilihan == 1){
                 // Jika dipilih SPL
+
+                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
+
+
                 while (true){
                     // Melakukan pengulangan input sampai input valid
 
                     menu.tampilanSubMenu1();
-                    System.out.print("\nPilihan sub: ");
+                    System.out.print("\n>> Pilihan sub: ");
                     int pilihanSub = Input.pil();
+
+
 
                     if (pilihanSub == 1){
                         // Jika dipilih metode eliminasi Gauss
@@ -57,6 +67,13 @@ public class Main {
                    Akan dibaca matriks dengan dimensi masukan dari keyboard
                    Lalu setiap variabel matriks akan diinput dan akan dihasilkan 
                    matriks tersebut dengan salah satu dari 3 metode */
+
+                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
+
                 menu.batas();
 
                 System.out.print("Masukkan dimensi dari matriks: ");
@@ -74,7 +91,7 @@ public class Main {
                     // Melakukan pengulangan sampai input benar (subPilihan 1-3)
                     menu.batas();
                     menu.tampilanSubMenu2();
-                    System.out.print("\nPilihan sub: ");
+                    System.out.print("\n>> Pilihan sub: ");
                     int pilihanSub = Input.pil(); 
 
                     if (pilihanSub == 1){
@@ -107,9 +124,15 @@ public class Main {
 
             } else if (Pilihan == 3){
                 // Jika dipilih matriks balikan
+
+                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
                 menu.batas();
                 
-                System.out.print("Masukkan dimensi matriks: ");
+                System.out.print(">> Masukkan dimensi matriks: ");
                 int dimensi = Input.pil();
                 // input pilihan
 
@@ -130,7 +153,7 @@ public class Main {
 
                         // Melakukan pengulangan input sampai input valid
                         menu.tampilanSubMenu3();
-                        System.out.print("\nPilihan sub: ");
+                        System.out.print("\n>> Pilihan sub: ");
                         int pilihanSub = Input.pil();
 
                         if (pilihanSub == 1){
@@ -165,7 +188,7 @@ public class Main {
                             menu.batas();
 
                             if (Prove_Inverse.buktiInverse(matriks, invMatriks)) {
-                                System.out.println("Benar matriks berikut : ");
+                                System.out.println("Benar, matriks berikut : ");
                                 Primitive.displayMatrix(invMatriks);
                                 System.out.println("Merupakan inverse dari matriks berikut : ");
                                 Primitive.displayMatrix(matriks);
@@ -186,6 +209,7 @@ public class Main {
                         } else {
                             System.out.println("Masukan tidak valid, harap ulangi!");
                             // Pesan yang dikeluarkan saat input tidak valid
+                            menu.batas();
 
                         }
 
@@ -196,16 +220,38 @@ public class Main {
 
             } else if (Pilihan == 4){
                 // Jika dipilih Interpolasi Polinom
-                // ...
 
+                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
+
+                // ...
 
             } else if (Pilihan == 5){
                 // Jika dipilih Interpolasi Bicubic
+
+                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
+
+
                 // ...
 
 
             } else if (Pilihan == 6){
                 // Jika dipilih Regresi Linier berganda
+
+                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                int pilInput = Input.pilihanInput();
+                /* 
+                 * ...
+                 */
+
+
                 // ...
 
 
