@@ -33,7 +33,19 @@ public class Input {
         return pilInput;
     }
 
-
+    public static int inputDimensi(){
+        int dimensi;
+        while (true){
+            System.out.print(">> Masukkan dimensi matriks: ");
+            dimensi = scan.nextInt();
+            if (dimensi >= 0){
+                break;
+            } else {
+                System.out.println("Masukan tidak valid, harap ulangi!");
+            }
+        }
+        return dimensi;
+    }
 
 
 
