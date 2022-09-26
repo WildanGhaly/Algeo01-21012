@@ -109,6 +109,41 @@ public class Primitive {
         return mBaru;
     }
 
+    public static boolean zero (double N){
+        /* Mengembalikan true jika nilai N di antara -1.0e-12 dan 1.0e-12
+         * Tujuan : agar nilai yang SANGAT KECIL dianggap nol
+         */
+        double eps = 1.0e-12;
+        return ((N > ((-1)*eps)) && (N < eps));
+    }
+
+    public static boolean colNol (double[][] m, int col){
+        /* Menerima nilai kolom (col) dalam matriks (m)
+         * Mengembalikan TRUE jika semua nilai matriks (m) pada kolom (col) adalah NOL
+         */
+        boolean zero = true;
+        for (int i = 0 ; i < m.length ; i++){
+            if (!zero (m[i][col])){
+                // Jika ada setidaknya satu nilai yang BUKAN NOL pada kolom (col) maka akan mengembalikan false
+                zero = false;
+            }
+        }
+        return zero;
+    }
+
+    public static boolean rowNol (double[][] m, int row){
+        /* Menerima nilai baris (row) dalam matriks (m)
+         * Mengembalikan TRUE jika semua nilai matriks (m) pada row (row) adalah NOL
+         */
+        boolean zero = true;
+        for (int j = 0 ; j < m[0].length ; j++){
+            if (!zero (m[row][j]) ){
+                // Jika ada setidaknya satu nilai yang BUKAN NOL pada kolom (col) maka akan mengembalikan false
+                zero = false;
+            }
+        }
+        return zero;
+    }
 
 
 
