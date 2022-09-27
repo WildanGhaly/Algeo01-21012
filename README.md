@@ -34,7 +34,7 @@ Berikut adalah sesuatu yang perlu diinstall sebelum menjalankan program:
 Program ini dikembangkan dan dikelola oleh:
 1. Haikal Ardzi Shofiyyurrohman (13521012)
 2. Hidayatullah Wildan Ghaly Buchary (13521015)
-3. Muhammad Haidar Akita Tresn (13521025)
+3. Muhammad Haidar Akita Tresnadi (13521025)
 
    [Java]: <https://www.java.com/en/download/>
    [Java Development Kit]: <https://www.oracle.com/java/technologies/downloads/#java11>
