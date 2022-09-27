@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+//Gauss_Jordan
 public class Gauss_Jordan {
     //fungsi untuk menghasilkan Matrix Eselon Baris Tereduksi
     public static double[][] gauss_Jordan(double[][] m) {
@@ -46,23 +45,4 @@ public class Gauss_Jordan {
         }
         return m;
     }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int dimensi = scan.nextInt();
-        double[][] matriks = new double[dimensi][dimensi];
-
-        for (int i = 0 ; i < dimensi ; i++){
-            for (int j = 0 ; j < dimensi ; j++){
-                matriks[i][j] = scan.nextDouble();
-            }
-        }
-
-
-        Primitive.displayMatrix(gauss_Jordan(matriks));
-
-
-        scan.close();
-    }
-
 }
