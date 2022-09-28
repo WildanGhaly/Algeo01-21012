@@ -177,4 +177,23 @@ public class Primitive {
         return hasilSPL;
     }
 
+    public static double[][] merge(double[][] m1, double[][] m2){
+        /* 
+         * Menggabungkan nilai matriks m1 dengan m2 dengan nilai baris yang sama
+         */
+        double[][] m3 = new double[m1.length][m1[0].length + m2[0].length];
+        for (int i = 0; i < m1.length; i++){
+            for (int j = 0; j < m1[0].length; j++){
+                m3[i][j] = m1[i][j];
+            }
+        }
+        for (int i = 0; i < m1.length; i++){
+            int jj = 0;
+            for (int j = m1[0].length; j < m1[0].length + m2[0].length; j++){
+                m3[i][j] = m2[i][jj];
+                jj++;
+            }
+        }
+        return m3;
+    }
 }
