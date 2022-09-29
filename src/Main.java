@@ -86,7 +86,7 @@ public class Main {
 
                     while (true){
                     // Melakukan pengulangan sampai input benar (subPilihan 1-3)
-                    menu.batas();
+                    Menu.batas();
                     menu.tampilanSubMenu2();
                     System.out.print("\n>> Pilihan sub: ");
                     int pilihanSub = Input.pil(); 
@@ -105,23 +105,60 @@ public class Main {
 
                     } else if (pilihanSub == 3){
                         // Pencarian dengan Ekspansi Kofaktor
-                        menu.batas();
+                        Menu.batas();
                         double det = Determinan.DeterminanKofaktor(matriks);
                         System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
-                        menu.batas();
+                        Menu.batas();
                         break;
 
                     } else {
                         System.out.println("Masukkan tidak valid, harap ulangi!");
                         // Pesan yang dikeluarkan saat input tidak valid
-                        menu.batas();
 
                     }
                 }
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
-                    // ...
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+
+                    if (Primitive.isSquare(m)){
+                        while (true){
+
+                            // Melakukan pengulangan sampai input benar (subPilihan 1-3)
+                            Menu.batas();
+                            menu.tampilanSubMenu2();
+                            System.out.print("\n>> Pilihan sub: ");
+                            int pilihanSub = Input.pil(); 
+        
+                            if (pilihanSub == 1){
+                                // Jika dipilih metode OBE
+                                Menu.batas();
+                                double det = DeterminanOBE.determinanOBE(m);
+                                Primitive.displayMatrix(m);
+                                System.out.println("Berdasarkan OBE, nilai determinannya adalah: " + det);
+                                Menu.batas();
+                                break;
+        
+                            } else if (pilihanSub == 2){
+                                // Pencarian dengan Ekspansi Kofaktor
+                                Menu.batas();
+                                double det = Determinan.DeterminanKofaktor(m);
+                                System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
+                                Menu.batas();
+                                break;
+        
+                            } else {
+                                System.out.println("Masukkan tidak valid, harap ulangi!");
+                                // Pesan yang dikeluarkan saat input tidak valid
+        
+                            }
+                        }
+                    } else {
+                        System.out.println("Determinan tidak dapat ditentukan karena bukan matriks persegi");
+                    }
+
                 }
 
             } else if (Pilihan == 3){
@@ -142,11 +179,11 @@ public class Main {
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
-                    menu.batas();
+                    Menu.batas();
 
                     if (Determinan.DeterminanKofaktor(matriks)==0){
                         System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
-                        menu.batas();
+                        Menu.batas();
                     } else {
                     
                     while (true){
@@ -158,14 +195,22 @@ public class Main {
 
                         if (pilihanSub == 1){
                             // Metode adjoint
-                            menu.batas();
+                            Menu.batas();
+                            System.out.println("Matriks kofaktornya adalah: ");
+                            double[][] kofaktor = Balikan.kofaktorMatriks(matriks);
+                            Primitive.displayMatrix(kofaktor);
+
+                            System.out.println("Matriks adjoinnya adalah: ");
+                            double[][] adjoin = Balikan.transpose(kofaktor);
+                            Primitive.displayMatrix(adjoin);
+
                             System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
                             double[][] balikan = Balikan.balikanKofaktor(matriks);
                             // Saat ini matriks balikan sudah didapatkan
 
                             // Cetak matriks
                             Primitive.displayMatrix(balikan);
-                            menu.batas();
+                            Menu.batas();
 
                             break;
                         } else if (pilihanSub == 2) {
@@ -174,42 +219,10 @@ public class Main {
 
                             break;
                             
-                        } else if (pilihanSub == 3) { 
-                            menu.batas();
-
-                            // Input inverse matriks:
-                            System.out.println("Masukkan nilai inverse matriks dimensi " + dimensi + " x " + dimensi);
-                            double[][] invMatriks = new double[dimensi][dimensi];
-                            invMatriks = Input.inputMatriks(dimensi, dimensi);
-                            // menerima masukan dari keyboard untuk membentuk matriks
-                            // inverse matriks yang ingin di cek akan tersimpan dalam variabel "invMatriks"
-                            // Saat ini nilai inverse matriks sudah terinput
-
-                            menu.batas();
-
-                            if (Prove_Inverse.buktiInverse(matriks, invMatriks)) {
-                                System.out.println("Benar, matriks berikut : ");
-                                Primitive.displayMatrix(invMatriks);
-                                System.out.println("Merupakan inverse dari matriks berikut : ");
-                                Primitive.displayMatrix(matriks);
-                                System.out.println("Karena hasil perkaliannya merupakan matriks identitas.");
-                                menu.batas();
-                                break;
-
-                            } else {
-                                System.out.println("Matriks berikut : ");
-                                Primitive.displayMatrix(invMatriks);
-                                System.out.println("BUKAN merupakan inverse dari matriks berikut : ");
-                                Primitive.displayMatrix(matriks);
-                                System.out.println("Karena hasil perkaliannya bukan merupakan matriks identitas.");
-                                menu.batas();
-                                break;
-                            }
-
                         } else {
                             System.out.println("Masukan tidak valid, harap ulangi!");
                             // Pesan yang dikeluarkan saat input tidak valid
-                            menu.batas();
+                            Menu.batas();
 
                         }
 
@@ -219,7 +232,58 @@ public class Main {
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
-                    // ...
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+                    
+                    if (m != null){
+
+                        Menu.batas();
+    
+                        if ((Determinan.DeterminanKofaktor(m)==0) || (!Primitive.isSquare(m))){
+                            System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
+                            Menu.batas();
+
+                        } else {
+                        
+                            while (true){
+        
+                                // Melakukan pengulangan input sampai input valid
+                                menu.tampilanSubMenu3();
+                                System.out.print("\n>> Pilihan sub: ");
+                                int pilihanSub = Input.pil();
+        
+                                if (pilihanSub == 1){
+                                    // Metode adjoint
+                                    Menu.batas();
+                                    System.out.println("Matriks kofaktornya adalah: ");
+                                    double[][] kofaktor = Balikan.kofaktorMatriks(m);
+                                    Primitive.displayMatrix(kofaktor);
+        
+                                    System.out.println("Matriks adjoinnya adalah: ");
+                                    double[][] adjoin = Balikan.transpose(kofaktor);
+                                    Primitive.displayMatrix(adjoin);
+        
+                                    System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
+                                    double[][] balikan = Balikan.balikanKofaktor(m);
+                                    // Saat ini matriks balikan sudah didapatkan
+        
+                                    // Cetak matriks
+                                    Primitive.displayMatrix(balikan);
+                                    Menu.batas();
+        
+                                    break;
+                                } else if (pilihanSub == 2) {
+                                    // Metode Gauss-Jordan
+                                    // ...
+        
+                                    break;
+                                    
+                                }
+                            }
+                        } 
+                    } else {
+                        System.out.println("Matriks tidak ditemukan atau tidak ada");
+                    }
                 }
             
             } else if (Pilihan == 4){

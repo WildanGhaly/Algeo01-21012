@@ -27,9 +27,8 @@ public class Menu {
     public void tampilanSubMenu2() {
         /* Menampilkan daftar SUB MENU KEDUA pada layar */
         System.out.println("Sub menu");
-        System.out.println("1. Metode eliminasi Gauss");
-        System.out.println("2. Metode eliminasi Gauss-Jordan");
-        System.out.println("3. Ekspansi kofaktor");
+        System.out.println("1. Metode OBE");
+        System.out.println("2. Ekspansi kofaktor");
     }
 
     public void tampilanSubMenu3() {
@@ -37,10 +36,9 @@ public class Menu {
         System.out.println("Sub menu");
         System.out.println("1. Metode adjoin");
         System.out.println("2. Metode Operasi Baris Elementer");
-        System.out.println("3. Mengecek kebenaran matriks balikan");
     }
 
-    public void batas(){
+    public static void batas(){
         /* Menampilkan batas berupa garis pada layar */
         System.out.println("=================================================");
         System.out.println("=================================================");

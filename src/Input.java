@@ -145,4 +145,32 @@ public class Input {
         }
         
     }
+
+    public static String read (){
+        /* 
+         * Menerima masukan input string dari keyboard.
+         * Jika file ditemukan maka fungsi akan mengembalikan nama file tersebut.
+         * Jika file tidak ditemukan maka fungsi akan meminta pengulangan input.
+         */
+        Scanner ss = new Scanner(System.in);
+        String file;
+        String address;
+        while (true){
+            Menu.batas();
+            System.out.print(">> masukan nama file: ");
+            file = ss.nextLine();
+            address = ".//test//" + file;
+            File f = new File (address);
+            try{
+                Scanner s = new Scanner(f);
+                break;
+            } catch (Exception e){
+                System.out.println("File tidak ditemukan, harap ulangi!");
+            }
+        }
+
+        return address;
+    }
+
+
 }

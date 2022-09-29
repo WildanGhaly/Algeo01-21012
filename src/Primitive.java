@@ -196,4 +196,11 @@ public class Primitive {
         }
         return m3;
     }
+
+    public static boolean isSquare(double[][] m){
+        /* 
+         * Mengembalikan true jika matriks m berbentuk persegi
+         */
+        return (m.length == m[0].length);
+    }
 }
