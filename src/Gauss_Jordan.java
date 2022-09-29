@@ -1,20 +1,21 @@
 //Gauss_Jordan
 public class Gauss_Jordan {
-    //fungsi untuk menghasilkan Matrix Eselon Baris Tereduksi
+
+    // fungsi untuk menghasilkan Matrix Eselon Baris Tereduksi
     public static double[][] gauss_Jordan(double[][] m) {
 
         int row = m.length;
         int col = m[0].length;
         // melakukan proses ternary agar
-        int endState = (col <= row) ? col-1 : row;
+        int endState = (col <= row) ? col - 1 : row;
         int colAcuan = 0;
         for (int k = 0; k < endState; k++) {
             // jika sudah sampai kolom terakhir, break
-            if (colAcuan == col-1){
+            if (colAcuan == col - 1) {
                 break;
             }
             // cek kolom acuan berelemen 0, apabila 0 maka geser index ke kolom kanannya
-            while (Primitive.colNol(m, colAcuan) && (colAcuan < col)){
+            while (Primitive.colNol(m, colAcuan) && (colAcuan < col)) {
                 colAcuan++;
             }
             double elAcuan = m[k][colAcuan];
