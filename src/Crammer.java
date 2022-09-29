@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class Crammer {
     public static double[] crammer(double[][] Matriks) {
