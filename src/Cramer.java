@@ -51,7 +51,7 @@ public class Cramer {
         return MatrixSementara;
     }
 
-    public static String[] solveCrammer (double[] hasil){
+    public static String[] solveCramer (double[] hasil){
         /* 
          * Menerima array hasil lalu menjadikannya array of string hasil
          */
