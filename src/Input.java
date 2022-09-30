@@ -168,7 +168,7 @@ public class Input {
                 System.out.println("File tidak ditemukan, harap ulangi!");
             }
         }
-
+        ss.close();
         return address;
     }
 

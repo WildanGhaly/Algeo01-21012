@@ -126,6 +126,15 @@ public class Primitive {
         return ((N > ((-1) * eps)) && (N < eps));
     }
 
+    public static boolean one(double N) {
+        /*
+         * Mengembalikan true jika nilai N di antara (1 -1.0e-12) dan (1 + 1.0e-12)
+         * Tujuan : agar nilai yang SANGAT KECIL dianggap nol
+         */
+        double eps = 1.0e-12;
+        return ((N > 1 + ((-1) * eps)) && (N < 1 + eps));
+    }
+
     public static boolean colNol(double[][] m, int col) {
         /*
          * Menerima nilai kolom (col) dalam matriks (m)
@@ -202,5 +211,61 @@ public class Primitive {
          * Mengembalikan true jika matriks m berbentuk persegi
          */
         return (m.length == m[0].length);
+    }
+
+    public static boolean rowNolXLast (double[] arr) {
+        /* 
+         * Mengembalikan true jika seluruh elemen array bernilai nol kecuali yang terakhir
+         */
+        for (int i = 0; i < arr.length-1; i++){
+            if (!zero(arr[i])){
+                return false;
+            }
+        }
+
+        boolean uji = !zero(arr[arr.length-1]) ? true : false;
+
+        return uji;
+        
+    }
+
+    public static boolean noSolusi(double[][] m) {
+        /* 
+         * Fungsi yang menerima matriks (m) lalu mengembalikan true jika tidak ada solusi
+         * Prekondisi: telah dilakukan eliminasi gauss pada matriks
+         */
+        for (int i = 0; i < m.length; i++){
+            if (!rowNolXLast(m[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static double[][] mEff(double[][] m) {
+        /* 
+         * Menerima matriks (m)
+         * Mengembalikan matriks effektif dari (m) (tanpa baris yang semua elemennya NOL)
+         */
+        int rowZero = 0;
+        for (int i = 0; i < m.length; i++){
+            if (rowNol(m,i)){
+                rowZero++;
+            }
+        }
+        if (rowZero == 0){
+            return m;
+        } else {
+            int rowEff = m.length - rowZero;
+            double[][] newM = new double[rowEff][m[0].length];
+
+            for (int i = 0; i < rowEff; i++){
+                for (int j = 0; j < m[0].length; j++){
+                    newM[i][j] = m[i][j];
+                }
+            }
+
+            return newM;
+        }
     }
 }
