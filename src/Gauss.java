@@ -133,4 +133,62 @@ public class Gauss {
         return m;
     }
 
+    public static String[] satuSolusi (double[][] m){
+        /* 
+         * Menerima matriks effektif.
+         * Prekondisi:
+         * - Matriks (m) memiliki baris = kolom - 1
+         * - Matriks (m) sudah dieliminasi gauss
+         */
+        int row = m.length;
+        int col = m[0].length;
+        String[] hasilS = new String[col-1];
+        double[] hasilD = new double[col-1];
+        for (int i = row-1; i >= 0; i--){
+            // Pencarian solusi dimulai dari belakang
+            hasilD[i] = m[i][col-1];
+            for (int j = (col-2); j > i; j--){
+                hasilD[i] = hasilD[i] - (m[i][j] * hasilD[j]);
+            }
+            // Solusi dalam bentuk string di store di HasilS
+            hasilS[i] = "x" + (i+1) + " = " + hasilD[i];
+        }
+
+        return hasilS;
+    }
+
+    public static String[] solveSPL (double[][] m) {
+        int row = m.length;
+        int col = m[0].length;
+        String[] noSol = {"Tidak ada solusi"};
+
+        if (Primitive.noSolusi(m)){
+            return noSol;
+        } else {
+            double[][] mEff = Primitive.mEff(m);
+            row = mEff.length;
+            try {
+                col = mEff[0].length;    
+            } catch (ArrayIndexOutOfBoundsException err){
+                col = 0;
+            }
+
+            if (row == (col-1)){
+                // Baris efektif SAMA dengan kolom efektif dikurang satu
+                // Maka solusi satu
+                return satuSolusi(mEff);
+
+            } else if (row < col - 1){
+                // Baris efektif KURANG dari kolom efektif dikurang satu
+                // Maka solusinya banyak T_T
+                return SolusiBanyak.solusiBanyak(mEff);
+                
+            } else {
+                // Baris efektif LEBIH dari kolom efektif dikurang satu
+                // Maka tidak ada solusi
+                return noSol;
+            }
+        }
+    }
+
 }
