@@ -46,4 +46,42 @@ public class Gauss_Jordan {
         }
         return m;
     }
+    
+    public static String[] solveSPLgj (double[][] m) {
+        /* 
+         * Menyelesaikan SPL hasil eliminasi gauss
+         */
+        int row;
+        int col;
+        String[] noSol = {"Tidak ada solusi"};
+
+        if (Primitive.noSolusi(m)){
+            return noSol;
+        } else {
+            double[][] mEff = Primitive.mEff(m);
+            row = mEff.length;
+            try {
+                col = mEff[0].length;    
+            } catch (ArrayIndexOutOfBoundsException err){
+                col = 0;
+            }
+
+            if (row == (col-1)){
+                // Baris efektif SAMA dengan kolom efektif dikurang satu
+                // Maka solusi satu
+                return Gauss.satuSolusi(mEff);
+
+            } else if (row < col - 1){
+                // Baris efektif KURANG dari kolom efektif dikurang satu
+                // Maka solusinya banyak T_T
+                return SolusiBanyak.solusiBanyakGJ(mEff);
+                
+            } else {
+                // Baris efektif LEBIH dari kolom efektif dikurang satu
+                // Maka tidak ada solusi
+                return noSol;
+            }
+        }
+    }
+
 }

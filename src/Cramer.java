@@ -1,7 +1,7 @@
 
 
-public class Crammer {
-    public static double[] crammer(double[][] Matriks) {
+public class Cramer {
+    public static double[] cramer(double[][] Matriks) {
         //Prekondisi baris, kolom = N, N+1
         //kamus
         int row = Matriks.length;
@@ -49,5 +49,16 @@ public class Crammer {
             MatrixSementara[i][kolom]=MatrixHasil[i][0];
         }
         return MatrixSementara;
+    }
+
+    public static String[] solveCramer (double[] hasil){
+        /* 
+         * Menerima array hasil lalu menjadikannya array of string hasil
+         */
+        String[] hasilS = new String[hasil.length];
+        for (int i = 0; i < hasil.length; i++){
+            hasilS[i] = "x" + (i+1) + " = " + hasil[i];
+        }
+        return hasilS;
     }
 }

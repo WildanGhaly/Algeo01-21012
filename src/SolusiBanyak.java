@@ -85,4 +85,44 @@ public class SolusiBanyak extends Primitive{
         
         return hasilS;
     }
+
+    public static String[] solusiBanyakGJ (double[][] m){
+        /* 
+         * Menerima matriks m yang sudah dieliminasi Gauss-Jordan lalu menyelesaikannya
+         * Prekondisi:
+         * - Matriks effektif dan solusinya sudah pasti parametrik
+         */
+        int count = 0;
+        int col = m[0].length;
+        int[] newVar = new int[col-1];
+        String[] hasilS = new String[col-1];
+
+        for (int i = 0; i < col-1; i++){
+            if (satuUtama(m, i) == IDX_UNDEF){
+                newVar[count] = i;
+                count++;
+            }
+        }
+        
+        for (int i = 0; i < col-1; i++){
+            String hasil = "";
+            int idxSatuUtama = satuUtama(m,i);
+            if (idxSatuUtama != IDX_UNDEF){
+                hasil += "x" + (i+1) + " = " + m[idxSatuUtama][col-1];
+
+                for (int j = (i+1); j < col-1; j++){
+                    double xVal = m[idxSatuUtama][j];
+                    if (!zero(xVal)){
+                        hasil += (" + (" + (-xVal) + ")" + variabel(j, newVar, count));
+                    }
+                }
+            } else {
+                hasil = ("x" + (i+1) + " = " + variabel(i, newVar, count));
+            }
+
+            hasilS[i] = hasil;
+        }
+        
+        return hasilS;
+    }
 }

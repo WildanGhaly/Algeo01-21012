@@ -21,8 +21,8 @@ public class Main {
                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
                 if (pilInput == 1){
-                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
-                    
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard 
+                    */
 
                     int[] rowCol = Input.inputUkuran();
                     int row = rowCol[0];
@@ -33,47 +33,128 @@ public class Main {
                     while (true){
                     // Melakukan pengulangan input sampai input valid
 
-                    menu.tampilanSubMenu1();
-                    System.out.print("\n>> Pilihan sub: ");
-                    int pilihanSub = Input.pil();
-    
+                        menu.tampilanSubMenu1();
+                        System.out.print("\n>> Pilihan sub: ");
+                        int pilihanSub = Input.pil();
+        
 
-                    if (pilihanSub == 1){
-                        // Jika dipilih metode eliminasi Gauss
-                        double[][] mNew = new double[row][col];
-                        mNew = Gauss.gauss(m);
-                        System.out.println("Berdasarkan eliminasi gauss, matriksnya menjadi: ");
-                        Primitive.displayMatrix(mNew);
-                        System.out.println("Solusi dari persamaan diatas adalah: ");
-                        String[] hasil = Gauss.solveSPL(mNew);
-                        Primitive.displayHasil(hasil);
+                        if (pilihanSub == 1){
+                            // Jika dipilih metode eliminasi Gauss
+                            double[][] mNew = new double[row][col];
+                            mNew = Gauss.gauss(m);
+                            System.out.println("Berdasarkan eliminasi gauss, matriksnya menjadi: ");
+                            Primitive.displayMatrix(mNew);
+                            System.out.println("Solusi dari persamaan diatas adalah: ");
+                            String[] hasil = Gauss.solveSPL(mNew);
+                            Primitive.displayHasil(hasil);
 
-                        break;
-                    } else if (pilihanSub == 2){
-                        // Jika dipilih metode eliminasi Gauss-Jordan
-                        // ...
+                            break;
 
-                        break;
-                    } else if (pilihanSub == 3){
-                        // Jika dipilih metode matriks balikan
-                        // ...
+                        } else if (pilihanSub == 2){
+                            // Jika dipilih metode eliminasi Gauss-Jordan
+                            double[][] mNew = new double[row][col];
+                            mNew = Gauss_Jordan.gauss_Jordan(m);
+                            System.out.println("Berdasarkan eliminasi Gauss-Jordan, matriksnya menjadi: ");
+                            Primitive.displayMatrix(mNew);
+                            System.out.println("Solusi dari persamaan diatas adalah: ");
+                            String[] hasil = Gauss_Jordan.solveSPLgj(mNew);
+                            Primitive.displayHasil(hasil);
 
-                        break;
-                    } else if (pilihanSub == 4){
-                        // Jika dipilih Kaidah Cramer
-                        // ...
+                            break;
 
-                        break;
-                    } else {
-                        System.out.println("Masukan tidak valid, harap ulangi!");
-                        // Pesan yang dikeluarkan saat input tidak valid
+                        } else if (pilihanSub == 3){
+                            // Jika dipilih metode matriks balikan
+                            System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
+                            InverseMatriksSPL.inverseMatrixSPL(m);
 
+                            break;
+
+                        } else if (pilihanSub == 4){
+                            // Jika dipilih Kaidah Cramer
+                            if (Determinan.DeterminanKofaktor(m) == 0){
+                                System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
+                            
+                            } else {
+                                String[] hasil = Cramer.solveCramer(Cramer.cramer(m));
+                                System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
+                                Primitive.displayHasil(hasil);
+
+                            }
+
+                            break;
+
+                        } else {
+                            System.out.println("Masukan tidak valid, harap ulangi!");
+                            // Pesan yang dikeluarkan saat input tidak valid
+
+                        }
                     }
-                }
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
-                    // ...
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+                    int row = m.length;
+                    int col = m[0].length;
+                    while (true){
+                        // Melakukan pengulangan input sampai input valid
+    
+                        menu.tampilanSubMenu1();
+                        System.out.print("\n>> Pilihan sub: ");
+                        int pilihanSub = Input.pil();
+        
+
+                        if (pilihanSub == 1){
+                            // Jika dipilih metode eliminasi Gauss
+                            double[][] mNew = new double[row][col];
+                            mNew = Gauss.gauss(m);
+                            System.out.println("Berdasarkan eliminasi gauss, matriksnya menjadi: ");
+                            Primitive.displayMatrix(mNew);
+                            System.out.println("Solusi dari persamaan diatas adalah: ");
+                            String[] hasil = Gauss.solveSPL(mNew);
+                            Primitive.displayHasil(hasil);
+
+                            break;
+
+                        } else if (pilihanSub == 2){
+                            // Jika dipilih metode eliminasi Gauss-Jordan
+                            double[][] mNew = new double[row][col];
+                            mNew = Gauss_Jordan.gauss_Jordan(m);
+                            System.out.println("Berdasarkan eliminasi Gauss-Jordan, matriksnya menjadi: ");
+                            Primitive.displayMatrix(mNew);
+                            System.out.println("Solusi dari persamaan diatas adalah: ");
+                            String[] hasil = Gauss_Jordan.solveSPLgj(mNew);
+                            Primitive.displayHasil(hasil);
+
+                            break;
+
+                        } else if (pilihanSub == 3){
+                            // Jika dipilih metode matriks balikan
+                            System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
+                            InverseMatriksSPL.inverseMatrixSPL(m);
+
+                            break;
+
+                        } else if (pilihanSub == 4){
+                            // Jika dipilih Kaidah Cramer
+                            if (Determinan.DeterminanKofaktor(m) == 0){
+                                System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
+                            
+                            } else {
+                                String[] hasil = Cramer.solveCramer(Cramer.cramer(m));
+                                System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
+                                Primitive.displayHasil(hasil);
+
+                            }
+
+                            break;
+
+                        } else {
+                            System.out.println("Masukan tidak valid, harap ulangi!");
+                            // Pesan yang dikeluarkan saat input tidak valid
+
+                        }
+                    }
                 }
 
             } else if (Pilihan == 2){
@@ -91,45 +172,41 @@ public class Main {
                     // Melakukan input pilihan
 
                     // Input matriks :
-                    double[][] matriks = new double[dimensi][dimensi];
+                    double[][] m = new double[dimensi][dimensi];
                     System.out.println("Masukkan nilai matriks berdimensi " + dimensi);
-                    matriks = Input.inputMatriks(dimensi, dimensi);
+                    m = Input.inputMatriks(dimensi, dimensi);
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
                     while (true){
                     // Melakukan pengulangan sampai input benar (subPilihan 1-3)
-                    Menu.batas();
-                    menu.tampilanSubMenu2();
-                    System.out.print("\n>> Pilihan sub: ");
-                    int pilihanSub = Input.pil(); 
-
-                    if (pilihanSub == 1){
-                        // Jika dipilih metode eliminasi Gauss
-                        // ...
-
-                        break;
-                        
-                    } else if (pilihanSub == 2){
-                        // Jika dipilih metode eliminasi Gauss-Jordan
-                        // ...
-
-                        break;
-
-                    } else if (pilihanSub == 3){
-                        // Pencarian dengan Ekspansi Kofaktor
                         Menu.batas();
-                        double det = Determinan.DeterminanKofaktor(matriks);
-                        System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
-                        Menu.batas();
-                        break;
+                        menu.tampilanSubMenu2();
+                        System.out.print("\n>> Pilihan sub: ");
+                        int pilihanSub = Input.pil(); 
 
-                    } else {
-                        System.out.println("Masukkan tidak valid, harap ulangi!");
-                        // Pesan yang dikeluarkan saat input tidak valid
+                        if (pilihanSub == 1){
+                            Menu.batas();
+                            double det = DeterminanOBE.determinanOBE(m);
+                            Primitive.displayMatrix(m);
+                            System.out.println("Berdasarkan OBE, nilai determinannya adalah: " + det);
+                            Menu.batas();
+                            break;
+                            
+                        } else if (pilihanSub == 2){
+                            // Pencarian dengan Ekspansi Kofaktor
+                            Menu.batas();
+                            double det = Determinan.DeterminanKofaktor(m);
+                            System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
+                            Menu.batas();
+                            break;
 
+                        } else {
+                            System.out.println("Masukkan tidak valid, harap ulangi!");
+                            // Pesan yang dikeluarkan saat input tidak valid
+
+                        }
                     }
-                }
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
@@ -227,7 +304,7 @@ public class Main {
 
                             break;
                         } else if (pilihanSub == 2) {
-                            // Metode Gauss-Jordan
+                            // Metode Identitas
                             // ...
 
                             break;
@@ -286,7 +363,7 @@ public class Main {
         
                                     break;
                                 } else if (pilihanSub == 2) {
-                                    // Metode Gauss-Jordan
+                                    // Metode Identitas
                                     // ...
         
                                     break;
