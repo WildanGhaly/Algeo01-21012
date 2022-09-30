@@ -28,6 +28,23 @@ public class Input {
         return m;
     }
 
+    public static int[] inputUkuran (){
+        int rowCol[] = new int[2];
+        while (true){
+            
+            System.out.println("Masukan dimensi matriks: ");
+            System.out.print(">> ");
+            rowCol[0] = scan.nextInt();
+            rowCol[1] = scan.nextInt();
+            if (Primitive.isArrValid(rowCol)){
+                break;
+            } else {
+                System.out.println("Masukan tidak valid, harap ulangi! ");
+            }
+        }
+        return rowCol;
+    }
+
     public static int pilihanInput() {
         /* 
          * Menerima masuka input integer dari keyboard

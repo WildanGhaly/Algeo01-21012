@@ -157,9 +157,40 @@ public class Gauss {
         return hasilS;
     }
 
-    public static String[] solveSPL (double[][] m) {
+    public static double[] satuSolusiDouble (double[][] m){
+        /* 
+         * Menerima matriks efektif.
+         * Sama seperti method satuSolusi, hanya saja keluarannya array of double
+         */
         int row = m.length;
         int col = m[0].length;
+        double[] hasil = new double[col-1];
+        for (int i = row-1; i >= 0; i--){
+            // Pencarian solusi dimulai dari belakang
+            hasil[i] = m[i][col-1];
+            for (int j = (col-2); j > i; j--){
+                hasil[i] = hasil[i] - (m[i][j] * hasil[j]);
+            }
+        }
+
+        return hasil;
+    }
+
+    public static double[] solveSPLdouble (double[][] m){
+        /* 
+         * Menerima matriks m
+         */
+        m = gauss(m);
+        double[][] mEff = Primitive.mEff(m);
+        return satuSolusiDouble(mEff);
+    }
+
+    public static String[] solveSPL (double[][] m) {
+        /* 
+         * Menyelesaikan SPL hasil eliminasi gauss
+         */
+        int row;
+        int col;
         String[] noSol = {"Tidak ada solusi"};
 
         if (Primitive.noSolusi(m)){
