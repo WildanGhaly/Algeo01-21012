@@ -1,7 +1,7 @@
 
 
-public class Crammer {
-    public static double[] crammer(double[][] Matriks) {
+public class Cramer {
+    public static double[] cramer(double[][] Matriks) {
         //Prekondisi baris, kolom = N, N+1
         //kamus
         int row = Matriks.length;

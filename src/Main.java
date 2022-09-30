@@ -75,7 +75,7 @@ public class Main {
                                 System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
                             
                             } else {
-                                String[] hasil = Crammer.solveCrammer(Crammer.crammer(m));
+                                String[] hasil = Cramer.solveCrammer(Cramer.cramer(m));
                                 System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
                                 Primitive.displayHasil(hasil);
 
@@ -141,7 +141,7 @@ public class Main {
                                 System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
                             
                             } else {
-                                String[] hasil = Crammer.solveCrammer(Crammer.crammer(m));
+                                String[] hasil = Cramer.solveCrammer(Cramer.cramer(m));
                                 System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
                                 Primitive.displayHasil(hasil);
 
