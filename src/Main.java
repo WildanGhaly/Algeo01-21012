@@ -407,10 +407,18 @@ public class Main {
                 int pilInput = Input.pilihanInput();
                 if (pilInput == 1){
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
-                    // ...  
+                    double[][] m = Input.inputPolasi();
+                    double x = Input.taksirPolasi();
+
+                    Interpolasipolinom.interpolinom(m, x);
+
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
-                    // ...
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+                    double x = Input.taksirPolasi();
+
+                    Interpolasipolinom.interpolinom(m, x);
                 }
 
             } else if (Pilihan == 5){
