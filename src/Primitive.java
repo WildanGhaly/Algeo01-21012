@@ -289,11 +289,30 @@ public class Primitive {
         /* 
          * Menerima array of integer N lalu mengembalikan true jika semua elemen N > 0
          */
+        
         for (int i = 0; i < N.length; i++){
             if (!isValid(N[i])){
                 return false;
             }
         }
         return true;
+    }
+
+    public static double[][] identitas (int dimensi){
+        /* 
+         * Menerima dimensi lalu mengembalikan matriks identitas dengan dimensi tersebut
+         */
+
+        double[][] m = new double[dimensi][dimensi];
+        for (int i = 0; i < dimensi; i++){
+            for (int j = 0; j < dimensi; j++){
+                if (i == j){
+                    m[i][j] = 1;
+                } else {
+                    m[i][j] = 0;
+                }
+            }
+        }
+        return m;
     }
 }

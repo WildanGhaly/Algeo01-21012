@@ -264,14 +264,14 @@ public class Main {
 
 
                     // Input matriks:
-                    double[][] matriks = new double[dimensi][dimensi];
-                    matriks = Input.inputMatriks(dimensi, dimensi);
+                    double[][] m = new double[dimensi][dimensi];
+                    m = Input.inputMatriks(dimensi, dimensi);
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
                     Menu.batas();
 
-                    if (Determinan.DeterminanKofaktor(matriks)==0){
+                    if (Determinan.DeterminanKofaktor(m)==0){
                         System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
                         Menu.batas();
                     } else {
@@ -287,7 +287,7 @@ public class Main {
                             // Metode adjoint
                             Menu.batas();
                             System.out.println("Matriks kofaktornya adalah: ");
-                            double[][] kofaktor = Balikan.kofaktorMatriks(matriks);
+                            double[][] kofaktor = Balikan.kofaktorMatriks(m);
                             Primitive.displayMatrix(kofaktor);
 
                             System.out.println("Matriks adjoinnya adalah: ");
@@ -295,7 +295,7 @@ public class Main {
                             Primitive.displayMatrix(adjoin);
 
                             System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
-                            double[][] balikan = Balikan.balikanKofaktor(matriks);
+                            double[][] balikan = Balikan.balikanKofaktor(m);
                             // Saat ini matriks balikan sudah didapatkan
 
                             // Cetak matriks
@@ -305,7 +305,19 @@ public class Main {
                             break;
                         } else if (pilihanSub == 2) {
                             // Metode Identitas
-                            // ...
+                            System.out.println("Matriks awalnya adalah: ");
+                            double[][] mAwal = new double[m.length][m[0].length * 2];
+                            double[][] identitas = new double[m.length][m[0].length];
+                            mAwal = Primitive.merge(m, identitas);
+                            Primitive.displayMatrix(mAwal);
+                            System.out.println("Matriks akhirnya adalah: ");
+                            double[][] mAkhir = new double[m.length][m[0].length * 2];
+                            double[][] mSolve = new double[m.length][m[0].length];
+                            mSolve = InverseMatriksOBE.inverseMatrixOBE(m);
+                            mAkhir = Primitive.merge(identitas, mSolve);
+                            Primitive.displayMatrix(mAkhir);
+                            System.out.println("Maka balikan dari matriks m adalah: ");
+                            Primitive.displayMatrix(mSolve);
 
                             break;
                             
@@ -364,7 +376,19 @@ public class Main {
                                     break;
                                 } else if (pilihanSub == 2) {
                                     // Metode Identitas
-                                    // ...
+                                    System.out.println("Matriks awalnya adalah: ");
+                                    double[][] mAwal = new double[m.length][m[0].length * 2];
+                                    double[][] identitas = new double[m.length][m[0].length];
+                                    mAwal = Primitive.merge(m, identitas);
+                                    Primitive.displayMatrix(mAwal);
+                                    System.out.println("Matriks akhirnya adalah: ");
+                                    double[][] mAkhir = new double[m.length][m[0].length * 2];
+                                    double[][] mSolve = new double[m.length][m[0].length];
+                                    mSolve = InverseMatriksOBE.inverseMatrixOBE(m);
+                                    mAkhir = Primitive.merge(identitas, mSolve);
+                                    Primitive.displayMatrix(mAkhir);
+                                    System.out.println("Maka balikan dari matriks m adalah: ");
+                                    Primitive.displayMatrix(mSolve);
         
                                     break;
                                     
