@@ -22,18 +22,31 @@ public class Main {
                 int pilInput = Input.pilihanInput();
                 if (pilInput == 1){
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
+                    
+
+                    int[] rowCol = Input.inputUkuran();
+                    int row = rowCol[0];
+                    int col = rowCol[1];
+                    double[][] m = new double[row][col];
+                    m = Input.inputMatriks(row, col);
+
                     while (true){
                     // Melakukan pengulangan input sampai input valid
 
                     menu.tampilanSubMenu1();
                     System.out.print("\n>> Pilihan sub: ");
                     int pilihanSub = Input.pil();
-
-
+    
 
                     if (pilihanSub == 1){
                         // Jika dipilih metode eliminasi Gauss
-                        // ...
+                        double[][] mNew = new double[row][col];
+                        mNew = Gauss.gauss(m);
+                        System.out.println("Berdasarkan eliminasi gauss, matriksnya menjadi: ");
+                        Primitive.displayMatrix(mNew);
+                        System.out.println("Solusi dari persamaan diatas adalah: ");
+                        String[] hasil = Gauss.solveSPL(mNew);
+                        Primitive.displayHasil(hasil);
 
                         break;
                     } else if (pilihanSub == 2){

@@ -235,7 +235,7 @@ public class Primitive {
          * Prekondisi: telah dilakukan eliminasi gauss pada matriks
          */
         for (int i = 0; i < m.length; i++){
-            if (!rowNolXLast(m[i])){
+            if (rowNolXLast(m[i])){
                 return true;
             }
         }
@@ -267,5 +267,33 @@ public class Primitive {
 
             return newM;
         }
+    }
+
+    public static void displayHasil (String[] hasil){
+        /* 
+         * Menampilkan seluruh isi array of string hasil
+         */
+        for (int i = 0; i < hasil.length; i++){
+            System.out.println(hasil[i]);
+        }
+    }
+
+    public static boolean isValid (int N){
+        /* 
+         * Menerima nilai integer N lalu mengembalikan true jika N > 0
+         */
+        return (N > 0);
+    }
+
+    public static boolean isArrValid (int[] N){
+        /* 
+         * Menerima array of integer N lalu mengembalikan true jika semua elemen N > 0
+         */
+        for (int i = 0; i < N.length; i++){
+            if (!isValid(N[i])){
+                return false;
+            }
+        }
+        return true;
     }
 }
