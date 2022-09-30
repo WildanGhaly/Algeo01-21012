@@ -189,5 +189,32 @@ public class Input {
         return address;
     }
 
+    public static double[][] inputPolasi(){
+        /* 
+         * Melakukan input dari keyboard untuk interpolasi matriks
+         */
+        int n;
+        while (true){
+            System.out.print(">> Masukkan nilai n: ");
+            n = scan.nextInt();
+            if (Primitive.isValid(n)){
+                break;
+            } else {
+                System.out.println("Masukan tidak valid, harap ulangi!");
+            }
+        }
+        double[][] m = new double[n+1][2];
+        System.out.println("Masukkan titik-titiknya!");
+        m = inputMatriks(n+1, 2);
+        return m;
+    }
+
+    public static double taksirPolasi(){
+        /* 
+         * Melakukan input dari keyboard untuk menaksir interpolasi matriks
+         */
+        double x = scan.nextDouble();
+        return x;
+    }
 
 }
