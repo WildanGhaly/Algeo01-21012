@@ -50,4 +50,15 @@ public class Crammer {
         }
         return MatrixSementara;
     }
+
+    public static String[] solveCrammer (double[] hasil){
+        /* 
+         * Menerima array hasil lalu menjadikannya array of string hasil
+         */
+        String[] hasilS = new String[hasil.length];
+        for (int i = 0; i < hasil.length; i++){
+            hasilS[i] = "x" + (i+1) + " = " + hasil[i];
+        }
+        return hasilS;
+    }
 }
