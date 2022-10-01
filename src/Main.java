@@ -411,6 +411,7 @@ public class Main {
                     double x = Input.taksirPolasi();
 
                     Interpolasipolinom.interpolinom(m, x);
+                    System.out.println();
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
@@ -419,6 +420,7 @@ public class Main {
                     double x = Input.taksirPolasi();
 
                     Interpolasipolinom.interpolinom(m, x);
+                    System.out.println();
                 }
 
             } else if (Pilihan == 5){

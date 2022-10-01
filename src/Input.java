@@ -117,9 +117,6 @@ public class Input {
             rowCol[0] = row; // Menyimpan nilai baris
             rowCol[1] = col; // Menyimpan nilai kolom 
 
-            sRow.close();
-            sCol.close();
-
             return rowCol;
 
         } catch (Exception e) {
@@ -154,7 +151,6 @@ public class Input {
                     }
                 }
                 
-                s.close();
                 return m;
             } catch (Exception e) {
                 return null;
@@ -185,8 +181,31 @@ public class Input {
                 System.out.println("File tidak ditemukan, harap ulangi!");
             }
         }
-        ss.close();
         return address;
+    }
+
+    public static double[] inputTitik(){
+        /* 
+         * Menerima input dari keyboard berupa titik x dan y.
+         * Fungsi mengembalikan array of double yang terdiri dari x dan y.
+         */
+        double[] titik = new double[2];
+        titik[0] = scan.nextDouble();
+        titik[1] = scan.nextDouble();
+        return titik;
+    }
+
+    public static boolean isTitikValid(double[][] m, int idx) {
+        /* 
+         * Mengembalikan true jika titik valid
+         */
+        boolean uji = true;
+        for (int i = 0; i < idx; i++){
+            if (m[i][0] == m[idx][0]){
+                uji = false;
+            }
+        }
+        return uji;
     }
 
     public static double[][] inputPolasi(){
@@ -205,7 +224,17 @@ public class Input {
         }
         double[][] m = new double[n+1][2];
         System.out.println("Masukkan titik-titiknya!");
-        m = inputMatriks(n+1, 2);
+        int titik = 0;
+        while (titik < (n+1)){
+            System.out.print(">> Masukkan titik ke " + (titik + 1) + " : ");
+            m[titik] = inputTitik();
+            if (isTitikValid(m, titik)){
+                titik++;
+            } else {
+                System.out.println("Tidak boleh memasukan titik x yang sama, harap ulangi!");
+            }
+
+        }
         return m;
     }
 
@@ -213,6 +242,7 @@ public class Input {
         /* 
          * Melakukan input dari keyboard untuk menaksir interpolasi matriks
          */
+        System.out.print(">> Masukkan nilai yang ingin ditaksir: ");
         double x = scan.nextDouble();
         return x;
     }
