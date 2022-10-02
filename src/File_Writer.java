@@ -122,8 +122,7 @@ public class File_Writer extends Input {
                 break;
 
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+
                 System.out.println("Error ditemukan");
             }
         }
@@ -241,6 +240,42 @@ public class File_Writer extends Input {
                 //...
 
                 
+            } catch (IOException e){
+                System.out.println("Error ditemukan");
+            }
+        }
+    }
+
+    public static void writeBikubik (double[][] m, double x, double y, double hasil){
+        /* 
+         * Fungsi untuk menulis hasil interpolasi bikubik dari matriks m
+         * (m) adalah matriks awal
+         */
+        int row = m.length;
+        int col = m[0].length;
+
+        while (true){
+            try {
+                System.out.println("Masukkan nama file yang ingin dibuat: ");
+                System.out.print(">> ");
+                String namaFile = scan.next();
+                String address = ".//test//output//" + namaFile;
+                FileWriter writer = new FileWriter(address);
+                writer.write("Diberikan matriks berikut\n");
+
+                for (int i = 0; i < row; i++){
+                    writer.append(Primitive.round2String(m[i][0]) + "");
+                    for (int j = 1; j < col; j++){
+                        writer.append(" " + Primitive.round2String(m[i][j]));
+                    }
+                    writer.append("\n");
+                }
+                writer.append("\n");
+
+                writer.append("Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(x) + " , " + Primitive.round2String(y) + ") adalah: " + Primitive.round2String(hasil));
+
+                writer.close();
+
             } catch (IOException e){
                 System.out.println("Error ditemukan");
             }
