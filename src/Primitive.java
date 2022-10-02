@@ -75,7 +75,7 @@ public class Primitive {
 
         double[][] m3 = new double[m1.length][m2[0].length];
         for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m1[0].length; j++) {
+            for (int j = 0; j < m2[0].length; j++) {
                 m3[i][j] = 0;
                 for (int k = 0; k < m2.length; k++) {
                     m3[i][j] += (m1[i][k] * m2[k][j]);
