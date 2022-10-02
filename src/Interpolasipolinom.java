@@ -1,5 +1,5 @@
 public class Interpolasipolinom {
-    public static void interpolinom(double[][] matrix, double x) {
+    public static String[] interpolinom(double[][] matrix, double x) {
         double[][] matriksSPL = new double[matrix.length][matrix.length + 1];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j <= matrix.length; j++) {
@@ -15,31 +15,37 @@ public class Interpolasipolinom {
         double[] solusiSPL = Gauss.satuSolusiDouble(matriksSPL);
         boolean first = true;
         double sum = 0;
-        System.out.print("f(x) = ");
+        String[] output = new String[solusiSPL.length + 2];
+        output[0] = ("f(x) = ");
+        int j = 1;
         for (int i = solusiSPL.length - 1; i >= 0; i--) {
             if (i != solusiSPL.length - 1 && solusiSPL[i] != 0 && i != 0) {
                 if (first == false) {
-                    System.out.print(" + " + solusiSPL[i] + "x^" + i);
+                    output[j] = (" + " + solusiSPL[i] + "x^" + i);
                     sum += (Math.pow(x, i) * solusiSPL[i]);
+                    j++;
                 } else {
-                    System.out.print(solusiSPL[i] + "x^" + i);
+                    output[j] = (solusiSPL[i] + "x^" + i);
                     sum += (Math.pow(x, i) * solusiSPL[i]);
                     first = false;
+                    j++;
                 }
-            } else if (i == 0) {
-                System.out.print(" + " + solusiSPL[i]);
+            } else if (i == 0 && solusiSPL[i] != 0) {
+                output[j] = (" + " + solusiSPL[i]);
                 sum += (Math.pow(x, i) * solusiSPL[i]);
+                j++;
             } else if (solusiSPL[i] == 0 && solusiSPL.length > 1) {
                 sum += 0;
             } else {
-                System.out.print(solusiSPL[i] + "x^" + i);
+                output[j] = (solusiSPL[i] + "x^" + i);
                 sum += (Math.pow(x, i) * solusiSPL[i]);
                 first = false;
+                j++;
             }
 
         }
-        System.out.print("\n");
-        System.out.print("f(" + x + ") = " + sum + "\n");
+        output[j] = ("f(" + x + ") = " + sum + "\n");
+        return output;
 
     }
 }

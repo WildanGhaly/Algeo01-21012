@@ -1,30 +1,36 @@
 public class Multiplyregression {
-    public static void multiplyRegression(double[][] matrix, double x) {
+    public static String[] multiplyRegression(double[][] matrix, double x) {
         double[][] matriksSPL = Gauss.gauss(matrix);
         double[] solusiSPL = Gauss.satuSolusiDouble(matriksSPL);
+        String[] output = new String[solusiSPL.length + 2];
         boolean first = true;
         double sum = 0;
-        System.out.print("f(x) = ");
+        int j = 1;
+        output[0] = ("f(x) = ");
         for (int i = 0; i < solusiSPL.length; i++) {
             if (i != 0 && solusiSPL[i] != 0) {
                 if (first == false) {
-                    System.out.print(" + " + solusiSPL[i] + "x" + i);
+                    output[j] = (" + " + solusiSPL[i] + "x" + i);
                     sum += (x * solusiSPL[i]);
+                    j++;
                 } else {
-                    System.out.print(solusiSPL[i]);
+                    output[j] = Double.toString(solusiSPL[i]);
                     sum += (x * solusiSPL[i]);
                     first = false;
+                    j++;
                 }
             } else if (solusiSPL[i] == 0 && solusiSPL.length > 1) {
                 sum += 0;
             } else {
-                System.out.print(solusiSPL[i]);
+                output[j] = Double.toString(solusiSPL[i]);
                 sum += (x * solusiSPL[i]);
                 first = false;
+                j++;
             }
         }
-        System.out.print("\n");
-        System.out.print("f(" + x + ") = " + sum + "\n");
+
+        output[j] = ("f(" + x + ") = " + sum);
+        return output;
 
     }
 
