@@ -48,6 +48,13 @@ public class Main {
                             String[] hasil = Gauss.solveSPL(mNew);
                             Primitive.displayHasil(hasil);
 
+                            String metode = "Berdasarkan eliminasi Gauss, didapatkan hasil: \n";
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, mNew, true, hasil, metode);
+                            }
+
                             break;
 
                         } else if (pilihanSub == 2){
@@ -59,6 +66,13 @@ public class Main {
                             System.out.println("Solusi dari persamaan diatas adalah: ");
                             String[] hasil = Gauss_Jordan.solveSPLgj(mNew);
                             Primitive.displayHasil(hasil);
+
+                            String metode = "Berdasarkan eliminasi Gauss-Jordan, didapatkan hasil: \n";
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, mNew, true, hasil, metode);
+                            }
 
                             break;
 
@@ -73,11 +87,28 @@ public class Main {
                             // Jika dipilih Kaidah Cramer
                             if (Determinan.DeterminanKofaktor(m) == 0){
                                 System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
+
+                                String metode = "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0\n";
+
+                                boolean pilFile = File_Writer.apaMasukFile();
+                                
+                                String[] hasil = {};
+
+                                if (pilFile) {
+                                    File_Writer.writeSPL(m, null, false, hasil, metode);
+                                }
                             
                             } else {
                                 String[] hasil = Cramer.solveCramer(Cramer.cramer(m));
                                 System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
                                 Primitive.displayHasil(hasil);
+
+                                String metode = "Berdasarkan aturan cramer, didapatkan hasil: \n";
+                                boolean pilFile = File_Writer.apaMasukFile();
+    
+                                if (pilFile) {
+                                    File_Writer.writeSPL(m, null, false, hasil, metode);
+                                }
 
                             }
 
@@ -114,6 +145,14 @@ public class Main {
                             String[] hasil = Gauss.solveSPL(mNew);
                             Primitive.displayHasil(hasil);
 
+                            
+                            String metode = "Berdasarkan eliminasi Gauss, didapatkan hasil: \n";
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, mNew, true, hasil, metode);
+                            }
+
                             break;
 
                         } else if (pilihanSub == 2){
@@ -125,6 +164,13 @@ public class Main {
                             System.out.println("Solusi dari persamaan diatas adalah: ");
                             String[] hasil = Gauss_Jordan.solveSPLgj(mNew);
                             Primitive.displayHasil(hasil);
+
+                            String metode = "Berdasarkan eliminasi Gauss-Jordan, didapatkan hasil: \n";
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, mNew, true, hasil, metode);
+                            }
 
                             break;
 
@@ -140,10 +186,27 @@ public class Main {
                             if (Determinan.DeterminanKofaktor(m) == 0){
                                 System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
                             
+                                String metode = "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0\n";
+
+                                boolean pilFile = File_Writer.apaMasukFile();
+                                
+                                String[] hasil = {};
+
+                                if (pilFile) {
+                                    File_Writer.writeSPL(m, null, false, hasil, metode);
+                                }
+
                             } else {
                                 String[] hasil = Cramer.solveCramer(Cramer.cramer(m));
                                 System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
                                 Primitive.displayHasil(hasil);
+
+                                String metode = "Berdasarkan aturan cramer, didapatkan hasil: \n";
+                                boolean pilFile = File_Writer.apaMasukFile();
+    
+                                if (pilFile) {
+                                    File_Writer.writeSPL(m, null, false, hasil, metode);
+                                }
 
                             }
 
@@ -186,19 +249,34 @@ public class Main {
                         int pilihanSub = Input.pil(); 
 
                         if (pilihanSub == 1){
-                            Menu.batas();
+
                             double det = DeterminanOBE.determinanOBE(m);
                             Primitive.displayMatrix(m);
-                            System.out.println("Berdasarkan OBE, nilai determinannya adalah: " + det);
-                            Menu.batas();
+
+                            String metode = "Berdasarkan OBE, nilai determinannya adalah: " + det;
+                            System.out.println(metode);
+
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile){
+                                File_Writer.writeDeterminan(m, metode);
+                            }
+                            
                             break;
                             
                         } else if (pilihanSub == 2){
                             // Pencarian dengan Ekspansi Kofaktor
-                            Menu.batas();
+
                             double det = Determinan.DeterminanKofaktor(m);
-                            System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
-                            Menu.batas();
+                            String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + det;
+                            System.out.println(metode);
+
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile){
+                                File_Writer.writeDeterminan(m, metode);
+                            }
+
                             break;
 
                         } else {
@@ -224,19 +302,35 @@ public class Main {
         
                             if (pilihanSub == 1){
                                 // Jika dipilih metode OBE
-                                Menu.batas();
+
                                 double det = DeterminanOBE.determinanOBE(m);
                                 Primitive.displayMatrix(m);
-                                System.out.println("Berdasarkan OBE, nilai determinannya adalah: " + det);
-                                Menu.batas();
+    
+                                String metode = "Berdasarkan OBE, nilai determinannya adalah: " + det;
+                                System.out.println(metode);
+    
+                                boolean pilFile = File_Writer.apaMasukFile();
+    
+                                if (pilFile){
+                                    File_Writer.writeDeterminan(m, metode);
+                                }
+
                                 break;
         
                             } else if (pilihanSub == 2){
                                 // Pencarian dengan Ekspansi Kofaktor
-                                Menu.batas();
+
                                 double det = Determinan.DeterminanKofaktor(m);
-                                System.out.println("Berdasarkan kofaktor, nilai determinannya adalah: " + det);
-                                Menu.batas();
+
+                                String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + det;
+                                System.out.println(metode);
+    
+                                boolean pilFile = File_Writer.apaMasukFile();
+    
+                                if (pilFile){
+                                    File_Writer.writeDeterminan(m, metode);
+                                }
+
                                 break;
         
                             } else {
@@ -269,11 +363,18 @@ public class Main {
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
-                    Menu.batas();
 
                     if (Determinan.DeterminanKofaktor(m)==0){
-                        System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
-                        Menu.batas();
+                        
+                        String metode = "Matriks tidak memiliki balikan karena nilai determinan 0";
+                        System.out.println(metode);
+
+                        boolean pilFile = File_Writer.apaMasukFile();
+                        
+                        if (pilFile) {
+                            File_Writer.writeInverse(m, metode, null, false, false, null, null);
+                        }
+
                     } else {
                     
                     while (true){
@@ -285,7 +386,7 @@ public class Main {
 
                         if (pilihanSub == 1){
                             // Metode adjoint
-                            Menu.batas();
+
                             System.out.println("Matriks kofaktornya adalah: ");
                             double[][] kofaktor = Balikan.kofaktorMatriks(m);
                             Primitive.displayMatrix(kofaktor);
@@ -294,15 +395,22 @@ public class Main {
                             double[][] adjoin = Balikan.transpose(kofaktor);
                             Primitive.displayMatrix(adjoin);
 
-                            System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
+                            String metode = "Nilai inverse berdasarkan metode adjoint adalah: ";
+                            System.out.println(metode);
                             double[][] balikan = Balikan.balikanKofaktor(m);
                             // Saat ini matriks balikan sudah didapatkan
 
                             // Cetak matriks
                             Primitive.displayMatrix(balikan);
-                            Menu.batas();
+
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeInverse(m, metode, balikan, true, true, kofaktor, adjoin);
+                            }
 
                             break;
+
                         } else if (pilihanSub == 2) {
                             // Metode Identitas
                             System.out.println("Matriks awalnya adalah: ");
@@ -316,9 +424,16 @@ public class Main {
                             mSolve = InverseMatriksOBE.inverseMatrixOBE(m);
                             mAkhir = Primitive.merge(identitas, mSolve);
                             Primitive.displayMatrix(mAkhir);
-                            System.out.println("Maka balikan dari matriks m adalah: ");
+
+                            String metode = "Maka balikan dari matriks m berdasarkan teori identitas adalah ";
+                            System.out.println(metode);
                             Primitive.displayMatrix(mSolve);
 
+                            boolean pilFile = File_Writer.apaMasukFile();
+
+                            if (pilFile) {
+                                File_Writer.writeInverse(m, metode, mSolve, true, false, mAwal, mAkhir);
+                            }
                             break;
                             
                         } else {
