@@ -4,6 +4,13 @@ public class Primitive {
      * file lain
      */
 
+    public static String round2String(double X){
+        /* 
+         * Melakukan pembulatan ke 6 angka di belakang koma tetapi mengembalikannya dalam bentuk string
+         */
+        return (String.format("%.6f", X));
+    }
+
     public static void displayMatrix(double[][] m) {
         /*
          * I.S. m terdefinisi
@@ -16,12 +23,13 @@ public class Primitive {
          * 1 2 3
          * 4 5 6
          * 7 8 9
+         * Tetapi dibulatkan ke 6 angka di belakang koma
          */
 
         for (int i = 0; i < m.length; i++) {
-            System.out.print(m[i][0]);
+            System.out.print(round2String(m[i][0]));
             for (int j = 1; j < m[0].length; j++) {
-                System.out.print(" " + m[i][j]);
+                System.out.print(" " + round2String(m[i][j]));
             }
             System.out.print("\n");
         }
@@ -314,5 +322,20 @@ public class Primitive {
             }
         }
         return m;
+    }
+
+    public static double[][] cloneM (double[][] m){
+        /* 
+         * Menduplikasi matriks m
+         */
+        int row = m.length;
+        int col = m[0].length;
+        double[][] n = new double[row][col];
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < col; j++){
+                n[i][j] = m[i][j];
+            }
+        }
+        return n;
     }
 }

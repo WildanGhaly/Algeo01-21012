@@ -138,7 +138,8 @@ public class Main {
                         if (pilihanSub == 1){
                             // Jika dipilih metode eliminasi Gauss
                             double[][] mNew = new double[row][col];
-                            mNew = Gauss.gauss(m);
+                            mNew = Primitive.cloneM(m);
+                            mNew = Gauss.gauss(mNew);
                             System.out.println("Berdasarkan eliminasi gauss, matriksnya menjadi: ");
                             Primitive.displayMatrix(mNew);
                             System.out.println("Solusi dari persamaan diatas adalah: ");
@@ -158,7 +159,8 @@ public class Main {
                         } else if (pilihanSub == 2){
                             // Jika dipilih metode eliminasi Gauss-Jordan
                             double[][] mNew = new double[row][col];
-                            mNew = Gauss_Jordan.gauss_Jordan(m);
+                            mNew = Primitive.cloneM(m);
+                            mNew = Gauss_Jordan.gauss_Jordan(mNew);
                             System.out.println("Berdasarkan eliminasi Gauss-Jordan, matriksnya menjadi: ");
                             Primitive.displayMatrix(mNew);
                             System.out.println("Solusi dari persamaan diatas adalah: ");
@@ -253,7 +255,7 @@ public class Main {
                             double det = DeterminanOBE.determinanOBE(m);
                             Primitive.displayMatrix(m);
 
-                            String metode = "Berdasarkan OBE, nilai determinannya adalah: " + det;
+                            String metode = "Berdasarkan OBE, nilai determinannya adalah: " + Primitive.round2String(det);
                             System.out.println(metode);
 
                             boolean pilFile = File_Writer.apaMasukFile();
@@ -268,7 +270,7 @@ public class Main {
                             // Pencarian dengan Ekspansi Kofaktor
 
                             double det = Determinan.DeterminanKofaktor(m);
-                            String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + det;
+                            String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + Primitive.round2String(det);
                             System.out.println(metode);
 
                             boolean pilFile = File_Writer.apaMasukFile();
@@ -306,7 +308,7 @@ public class Main {
                                 double det = DeterminanOBE.determinanOBE(m);
                                 Primitive.displayMatrix(m);
     
-                                String metode = "Berdasarkan OBE, nilai determinannya adalah: " + det;
+                                String metode = "Berdasarkan OBE, nilai determinannya adalah: " + Primitive.round2String(det);
                                 System.out.println(metode);
     
                                 boolean pilFile = File_Writer.apaMasukFile();
@@ -322,7 +324,7 @@ public class Main {
 
                                 double det = Determinan.DeterminanKofaktor(m);
 
-                                String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + det;
+                                String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + Primitive.round2String(det);
                                 System.out.println(metode);
     
                                 boolean pilFile = File_Writer.apaMasukFile();
