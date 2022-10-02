@@ -151,7 +151,7 @@ public class Gauss {
                 hasilD[i] = hasilD[i] - (m[i][j] * hasilD[j]);
             }
             // Solusi dalam bentuk string di store di HasilS
-            hasilS[i] = "x" + (i+1) + " = " + hasilD[i];
+            hasilS[i] = "x" + (i+1) + " = " + Primitive.round2String(hasilD[i]);
         }
 
         return hasilS;
@@ -178,7 +178,7 @@ public class Gauss {
 
     public static double[] solveSPLdouble (double[][] m){
         /* 
-         * Menerima matriks m
+         * Menerima matriks m lalu mengembalikan solusinya dalam array of double
          */
         m = gauss(m);
         double[][] mEff = Primitive.mEff(m);

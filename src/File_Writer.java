@@ -54,9 +54,9 @@ public class File_Writer extends Input {
                 writer.write("Diberikan matriks di bawah ini!\n");
 
                 for (int i = 0; i < row; i++){
-                    writer.append(m[i][0] + "");
+                    writer.append(Primitive.round2String(m[i][0]) + "");
                     for (int j = 1; j < col; j++){
-                        writer.append(" " + m[i][j]);
+                        writer.append(" " + Primitive.round2String(m[i][j]));
                     }
                     writer.append("\n");
                 }
@@ -65,9 +65,9 @@ public class File_Writer extends Input {
                 if (gauss) {
                     writer.append("Dibawah ini adalah hasil dari eliminasinya! \n");
                     for (int i = 0; i < mNew.length; i++){
-                        writer.append(mNew[i][0] + "");
+                        writer.append(Primitive.round2String(mNew[i][0]) + "");
                         for (int j = 1; j < mNew[0].length; j++){
-                            writer.append(" " + m[i][j]);
+                            writer.append(" " + Primitive.round2String(mNew[i][j]));
                         }
                         writer.append("\n");
                     }
@@ -107,9 +107,9 @@ public class File_Writer extends Input {
                 writer.write("Diberikan matriks di bawah ini!\n");
 
                 for (int i = 0; i < m.length; i++){
-                    writer.append(m[i][0] + "");
-                    for (int j = 1; i < m[0].length; j++){
-                        writer.append(" " + m[i][j]);
+                    writer.append(Primitive.round2String(m[i][0]) + "");
+                    for (int j = 1; j < m[0].length; j++){
+                        writer.append(" " + Primitive.round2String(m[i][j]));
                     }
                     writer.append("\n");
                 }
@@ -151,9 +151,9 @@ public class File_Writer extends Input {
                 writer.write("Diberikan matriks berikut\n");
 
                 for (int i = 0; i < m.length; i++){
-                    writer.append(m[i][0] + "");
-                    for (int j = 1; i < m[0].length; j++){
-                        writer.append(" " + m[i][j]);
+                    writer.append(Primitive.round2String(m[i][0]) + "");
+                    for (int j = 1; j < m[0].length; j++){
+                        writer.append(" " + Primitive.round2String(m[i][j]));
                     }
                     writer.append("\n");
                 }
@@ -162,18 +162,18 @@ public class File_Writer extends Input {
                 if (kofaktor){
                     writer.append("Berikut adalah matriks kofaktornya\n");
                     for (int i = 0; i < m1.length; i++){
-                        writer.append(m1[i][0] + "");
-                        for (int j = 1; i < m1[0].length; j++){
-                            writer.append(" " + m1[i][j]);
+                        writer.append(Primitive.round2String(m1[i][0]) + "");
+                        for (int j = 1; j < m1[0].length; j++){
+                            writer.append(" " + Primitive.round2String(m1[i][j]));
                         }
                         writer.append("\n");
                     }
 
                     writer.append("\nBerikut adalah matriks adjoinnya\n");
                     for (int i = 0; i < m2.length; i++){
-                        writer.append(m2[i][0] + "");
-                        for (int j = 1; i < m2[0].length; j++){
-                            writer.append(" " + m2[i][j]);
+                        writer.append(Primitive.round2String(m2[i][0]) + "");
+                        for (int j = 1; j < m2[0].length; j++){
+                            writer.append(" " + Primitive.round2String(m2[i][j]));
                         }
                         writer.append("\n");
                     }
@@ -182,18 +182,18 @@ public class File_Writer extends Input {
                 } else { // identitas
                     writer.append("Berikut adalah matriks sebelum pengoperasian\n");
                     for (int i = 0; i < m1.length; i++){
-                        writer.append(m1[i][0] + "");
-                        for (int j = 1; i < m1[0].length; j++){
-                            writer.append(" " + m1[i][j]);
+                        writer.append(Primitive.round2String(m[i][0]) + "");
+                        for (int j = 1; j < m1[0].length; j++){
+                            writer.append(" " + Primitive.round2String(m1[i][j]));
                         }
                         writer.append("\n");
                     }
 
                     writer.append("\nBerikut adalah matriks setelah pengoperasian\n");
                     for (int i = 0; i < m2.length; i++){
-                        writer.append(m2[i][0] + "");
+                        writer.append(Primitive.round2String(m2[i][0]) + "");
                         for (int j = 1; i < m2[0].length; j++){
-                            writer.append(" " + m2[i][j]);
+                            writer.append(" " + Primitive.round2String(m2[i][j]));
                         }
                         writer.append("\n");
                     }
@@ -204,9 +204,9 @@ public class File_Writer extends Input {
 
                 if (adaBalikan){
                     for (int i = 0; i < invM.length; i++){
-                        writer.append(invM[i][0] + "");
+                        writer.append(Primitive.round2String(invM[i][0]) + "");
                         for (int j = 1; i < invM[0].length; j++){
-                            writer.append(m[i][j] + " ");
+                            writer.append(Primitive.round2String(m[i][j]) + " ");
                         }
                         writer.append("\n");
                     }
@@ -222,5 +222,28 @@ public class File_Writer extends Input {
                 System.out.println("Error ditemukan");
             }
         }        
+    }
+
+    public static void writePolinom (double[][] m){
+        while (true){
+            try {
+                System.out.println("Masukkan nama file yang ingin dibuat: ");
+                System.out.print(">> ");
+                String namaFile = scan.next();
+                String address = ".//test//output//" + namaFile;
+                FileWriter writer = new FileWriter(address);
+                writer.write("Diberikan titik-titik berikut (x,y)\n");
+                for (int i = 0; i < m.length; i++){
+                    writer.append("(" + Primitive.round2String(m[i][0]) + " , " + Primitive.round2String(m[i][1]) + ")");
+                }
+
+                // tulis deh hasilnya
+                //...
+
+                
+            } catch (IOException e){
+                System.out.println("Error ditemukan");
+            }
+        }
     }
 }
