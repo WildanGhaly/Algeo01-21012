@@ -281,8 +281,12 @@ public class Primitive {
         /* 
          * Menampilkan seluruh isi array of string hasil
          */
+    
         for (int i = 0; i < hasil.length; i++){
             System.out.println(hasil[i]);
+            if (hasil[i] == null){
+                break;
+            }
         }
     }
 

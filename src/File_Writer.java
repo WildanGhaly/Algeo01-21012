@@ -223,7 +223,10 @@ public class File_Writer extends Input {
         }        
     }
 
-    public static void writePolinom (double[][] m){
+    public static void writePolinom (double[][] m, String[] solusi){
+        /* 
+         * 
+         */
         while (true){
             try {
                 System.out.println("Masukkan nama file yang ingin dibuat: ");
@@ -233,12 +236,14 @@ public class File_Writer extends Input {
                 FileWriter writer = new FileWriter(address);
                 writer.write("Diberikan titik-titik berikut (x,y)\n");
                 for (int i = 0; i < m.length; i++){
-                    writer.append("(" + Primitive.round2String(m[i][0]) + " , " + Primitive.round2String(m[i][1]) + ")");
+                    writer.append("(" + Primitive.round2String(m[i][0]) + " , " + Primitive.round2String(m[i][1]) + ")\n");
                 }
 
-                // tulis deh hasilnya
-                //...
-
+                writer.append("\nBerdasarkan interpolasi polinom, didapatkan persamaan berikut:");
+                for (int i = 0; i < solusi.length; i++){
+                    writer.append(solusi + "\n");
+                }
+                writer.close();
                 
             } catch (IOException e){
                 System.out.println("Error ditemukan");
@@ -246,7 +251,7 @@ public class File_Writer extends Input {
         }
     }
 
-    public static void writeBikubik (double[][] m, double x, double y, double hasil){
+    public static void writeBikubik (double[][] m, double x, double y, double hasil, String metode){
         /* 
          * Fungsi untuk menulis hasil interpolasi bikubik dari matriks m
          * (m) adalah matriks awal
@@ -272,7 +277,7 @@ public class File_Writer extends Input {
                 }
                 writer.append("\n");
 
-                writer.append("Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(x) + " , " + Primitive.round2String(y) + ") adalah: " + Primitive.round2String(hasil));
+                writer.append(metode);
 
                 writer.close();
 

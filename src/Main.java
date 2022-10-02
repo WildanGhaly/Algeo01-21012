@@ -526,9 +526,17 @@ public class Main {
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
                     double[][] m = Input.inputPolasi();
                     double x = Input.taksirPolasi();
+                    
+                    String metode = "Berdasarkan interpolasi polinom, didapatkan persamaan sebagai berikut:";
+                    System.out.println(metode);
+                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x)); 
 
-                    Interpolasipolinom.interpolinom(m, x);
-                    System.out.println();
+                    boolean pilFile = File_Writer.apaMasukFile();
+
+                    if (pilFile) {
+                        File_Writer.writePolinom(m, Interpolasipolinom.interpolinom(m, x));
+                    }
+
 
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
@@ -536,8 +544,15 @@ public class Main {
                     double[][] m = Input.readMatrix(file);
                     double x = Input.taksirPolasi();
 
-                    Interpolasipolinom.interpolinom(m, x);
-                    System.out.println();
+                    String metode = "Berdasarkan interpolasi polinom, didapatkan persamaan sebagai berikut:";
+                    System.out.println(metode);
+                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x)); 
+
+                    boolean pilFile = File_Writer.apaMasukFile();
+
+                    if (pilFile) {
+                        File_Writer.writePolinom(m, Interpolasipolinom.interpolinom(m, x));
+                    }
                 }
 
             } else if (Pilihan == 5){
@@ -547,10 +562,42 @@ public class Main {
                 int pilInput = Input.pilihanInput();
                 if (pilInput == 1){
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
-                    // ...  
+                    System.out.println("Silahkan masukkan matriks berdimensi 4 x 4");
+                    double[][] m = Input.inputMatriks(4, 4);
+
+                    System.out.println("Silahkan masukkan titik x dan y dipisahkan dengan spasi!");
+                    System.out.print(">> ");
+                    double[] titik = Input.inputTitik();
+
+                    double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
+                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah " + Primitive.round2String(hasil);
+                    System.out.println(fin);
+                    
+                    boolean pilFile = File_Writer.apaMasukFile();
+
+                    if (pilFile) {
+                        File_Writer.writeBikubik(m, titik[0], titik[1], hasil, fin);
+                    }
+
                 } else if (pilInput == 2){
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
-                    // ...
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+
+                    System.out.println("Silahkan masukkan titik x dan y dipisahkan dengan spasi!");
+                    System.out.print(">> ");
+                    double[] titik = Input.inputTitik();
+
+                    double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
+                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah " + Primitive.round2String(hasil);
+                    System.out.println(fin);
+
+                    boolean pilFile = File_Writer.apaMasukFile();
+
+                    if (pilFile) {
+                        File_Writer.writeBikubik(m, titik[0], titik[1], hasil, fin);
+                    }
+
                 }
 
 
