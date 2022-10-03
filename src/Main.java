@@ -571,7 +571,7 @@ public class Main {
                     System.out.print(">> ");
                     double[] titik = Input.inputTitik();
 
-                    double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
+                    double hasil = InterpolasiBicubic.solver(titik[0], titik[1], m);
                     String fin = "Berdasarkan interpolasi bikubik, nilai pada titik ("
                             + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah "
                             + Primitive.round2String(hasil);
@@ -592,7 +592,7 @@ public class Main {
                     System.out.print(">> ");
                     double[] titik = Input.inputTitik();
 
-                    double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
+                    double hasil = InterpolasiBicubic.solver(titik[0], titik[1], m);
                     String fin = "Berdasarkan interpolasi bikubik, nilai pada titik ("
                             + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah "
                             + Primitive.round2String(hasil);
