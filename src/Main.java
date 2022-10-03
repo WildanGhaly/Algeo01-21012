@@ -1,5 +1,4 @@
 
-
 /* Program Main untuk dijalankan saat demo */
 
 public class Main {
@@ -7,7 +6,7 @@ public class Main {
 
         Menu menu = new Menu();
 
-        while (true){
+        while (true) {
             // Melakukan pengulangan sampai input valid (pilihan antara 1 sampai 7)
 
             menu.tampilanMenu();
@@ -15,14 +14,15 @@ public class Main {
 
             int Pilihan = Input.pil();
 
-            if (Pilihan == 1){
+            if (Pilihan == 1) {
                 // Jika dipilih SPL
 
-                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
-                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard 
-                    */
+                if (pilInput == 1) {
+                    /*
+                     * Jika pilihan input 1 maka akan diminta masukan melalui keyboard
+                     */
 
                     int[] rowCol = Input.inputUkuran();
                     int row = rowCol[0];
@@ -30,15 +30,14 @@ public class Main {
                     double[][] m = new double[row][col];
                     m = Input.inputMatriks(row, col);
 
-                    while (true){
-                    // Melakukan pengulangan input sampai input valid
+                    while (true) {
+                        // Melakukan pengulangan input sampai input valid
 
                         menu.tampilanSubMenu1();
                         System.out.print("\n>> Pilihan sub: ");
                         int pilihanSub = Input.pil();
-        
 
-                        if (pilihanSub == 1){
+                        if (pilihanSub == 1) {
                             // Jika dipilih metode eliminasi Gauss
                             double[][] mNew = new double[row][col];
                             mNew = Gauss.gauss(m);
@@ -57,7 +56,7 @@ public class Main {
 
                             break;
 
-                        } else if (pilihanSub == 2){
+                        } else if (pilihanSub == 2) {
                             // Jika dipilih metode eliminasi Gauss-Jordan
                             double[][] mNew = new double[row][col];
                             mNew = Gauss_Jordan.gauss_Jordan(m);
@@ -76,28 +75,29 @@ public class Main {
 
                             break;
 
-                        } else if (pilihanSub == 3){
+                        } else if (pilihanSub == 3) {
                             // Jika dipilih metode matriks balikan
                             System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
                             InverseMatriksSPL.inverseMatrixSPL(m);
 
                             break;
 
-                        } else if (pilihanSub == 4){
+                        } else if (pilihanSub == 4) {
                             // Jika dipilih Kaidah Cramer
-                            if (Determinan.DeterminanKofaktor(m) == 0){
-                                System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
+                            if (Determinan.DeterminanKofaktor(m) == 0) {
+                                System.out.println(
+                                        "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
 
                                 String metode = "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0\n";
 
                                 boolean pilFile = File_Writer.apaMasukFile();
-                                
+
                                 String[] hasil = {};
 
                                 if (pilFile) {
                                     File_Writer.writeSPL(m, null, false, hasil, metode);
                                 }
-                            
+
                             } else {
                                 String[] hasil = Cramer.solveCramer(Cramer.cramer(m));
                                 System.out.println("Berdasarkan aturan crammer, solusinya adalah: ");
@@ -105,7 +105,7 @@ public class Main {
 
                                 String metode = "Berdasarkan aturan cramer, didapatkan hasil: \n";
                                 boolean pilFile = File_Writer.apaMasukFile();
-    
+
                                 if (pilFile) {
                                     File_Writer.writeSPL(m, null, false, hasil, metode);
                                 }
@@ -121,21 +121,20 @@ public class Main {
                         }
                     }
 
-                } else if (pilInput == 2){
+                } else if (pilInput == 2) {
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     String file = Input.read();
                     double[][] m = Input.readMatrix(file);
                     int row = m.length;
                     int col = m[0].length;
-                    while (true){
+                    while (true) {
                         // Melakukan pengulangan input sampai input valid
-    
+
                         menu.tampilanSubMenu1();
                         System.out.print("\n>> Pilihan sub: ");
                         int pilihanSub = Input.pil();
-        
 
-                        if (pilihanSub == 1){
+                        if (pilihanSub == 1) {
                             // Jika dipilih metode eliminasi Gauss
                             double[][] mNew = new double[row][col];
                             mNew = Primitive.cloneM(m);
@@ -146,7 +145,6 @@ public class Main {
                             String[] hasil = Gauss.solveSPL(mNew);
                             Primitive.displayHasil(hasil);
 
-                            
                             String metode = "Berdasarkan eliminasi Gauss, didapatkan hasil: \n";
                             boolean pilFile = File_Writer.apaMasukFile();
 
@@ -156,7 +154,7 @@ public class Main {
 
                             break;
 
-                        } else if (pilihanSub == 2){
+                        } else if (pilihanSub == 2) {
                             // Jika dipilih metode eliminasi Gauss-Jordan
                             double[][] mNew = new double[row][col];
                             mNew = Primitive.cloneM(m);
@@ -176,22 +174,23 @@ public class Main {
 
                             break;
 
-                        } else if (pilihanSub == 3){
+                        } else if (pilihanSub == 3) {
                             // Jika dipilih metode matriks balikan
                             System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
                             InverseMatriksSPL.inverseMatrixSPL(m);
 
                             break;
 
-                        } else if (pilihanSub == 4){
+                        } else if (pilihanSub == 4) {
                             // Jika dipilih Kaidah Cramer
-                            if (Determinan.DeterminanKofaktor(m) == 0){
-                                System.out.println("Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
-                            
+                            if (Determinan.DeterminanKofaktor(m) == 0) {
+                                System.out.println(
+                                        "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0");
+
                                 String metode = "Solusi tidak dapat ditentukan dengan aturan crammer karena determinan A = 0\n";
 
                                 boolean pilFile = File_Writer.apaMasukFile();
-                                
+
                                 String[] hasil = {};
 
                                 if (pilFile) {
@@ -205,7 +204,7 @@ public class Main {
 
                                 String metode = "Berdasarkan aturan cramer, didapatkan hasil: \n";
                                 boolean pilFile = File_Writer.apaMasukFile();
-    
+
                                 if (pilFile) {
                                     File_Writer.writeSPL(m, null, false, hasil, metode);
                                 }
@@ -222,15 +221,17 @@ public class Main {
                     }
                 }
 
-            } else if (Pilihan == 2){
-                /* Jika dipilih Determinan
-                   Akan dibaca matriks dengan dimensi masukan dari keyboard
-                   Lalu setiap variabel matriks akan diinput dan akan dihasilkan 
-                   matriks tersebut dengan salah satu dari 3 metode */
+            } else if (Pilihan == 2) {
+                /*
+                 * Jika dipilih Determinan
+                 * Akan dibaca matriks dengan dimensi masukan dari keyboard
+                 * Lalu setiap variabel matriks akan diinput dan akan dihasilkan
+                 * matriks tersebut dengan salah satu dari 3 metode
+                 */
 
-                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
+                if (pilInput == 1) {
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
 
                     int dimensi = Input.inputDimensi();
@@ -243,39 +244,41 @@ public class Main {
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
-                    while (true){
-                    // Melakukan pengulangan sampai input benar (subPilihan 1-3)
+                    while (true) {
+                        // Melakukan pengulangan sampai input benar (subPilihan 1-3)
                         Menu.batas();
                         menu.tampilanSubMenu2();
                         System.out.print("\n>> Pilihan sub: ");
-                        int pilihanSub = Input.pil(); 
+                        int pilihanSub = Input.pil();
 
-                        if (pilihanSub == 1){
+                        if (pilihanSub == 1) {
 
                             double det = DeterminanOBE.determinanOBE(m);
                             Primitive.displayMatrix(m);
 
-                            String metode = "Berdasarkan OBE, nilai determinannya adalah: " + Primitive.round2String(det);
+                            String metode = "Berdasarkan OBE, nilai determinannya adalah: "
+                                    + Primitive.round2String(det);
                             System.out.println(metode);
 
                             boolean pilFile = File_Writer.apaMasukFile();
 
-                            if (pilFile){
+                            if (pilFile) {
                                 File_Writer.writeDeterminan(m, metode);
                             }
-                            
+
                             break;
-                            
-                        } else if (pilihanSub == 2){
+
+                        } else if (pilihanSub == 2) {
                             // Pencarian dengan Ekspansi Kofaktor
 
                             double det = Determinan.DeterminanKofaktor(m);
-                            String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + Primitive.round2String(det);
+                            String metode = "Berdasarkan kofaktor, nilai determinannya adalah: "
+                                    + Primitive.round2String(det);
                             System.out.println(metode);
 
                             boolean pilFile = File_Writer.apaMasukFile();
 
-                            if (pilFile){
+                            if (pilFile) {
                                 File_Writer.writeDeterminan(m, metode);
                             }
 
@@ -288,57 +291,59 @@ public class Main {
                         }
                     }
 
-                } else if (pilInput == 2){
+                } else if (pilInput == 2) {
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     String file = Input.read();
                     double[][] m = Input.readMatrix(file);
 
-                    if (Primitive.isSquare(m)){
-                        while (true){
+                    if (Primitive.isSquare(m)) {
+                        while (true) {
 
                             // Melakukan pengulangan sampai input benar (subPilihan 1-3)
                             Menu.batas();
                             menu.tampilanSubMenu2();
                             System.out.print("\n>> Pilihan sub: ");
-                            int pilihanSub = Input.pil(); 
-        
-                            if (pilihanSub == 1){
+                            int pilihanSub = Input.pil();
+
+                            if (pilihanSub == 1) {
                                 // Jika dipilih metode OBE
 
                                 double det = DeterminanOBE.determinanOBE(m);
                                 Primitive.displayMatrix(m);
-    
-                                String metode = "Berdasarkan OBE, nilai determinannya adalah: " + Primitive.round2String(det);
+
+                                String metode = "Berdasarkan OBE, nilai determinannya adalah: "
+                                        + Primitive.round2String(det);
                                 System.out.println(metode);
-    
+
                                 boolean pilFile = File_Writer.apaMasukFile();
-    
-                                if (pilFile){
+
+                                if (pilFile) {
                                     File_Writer.writeDeterminan(m, metode);
                                 }
 
                                 break;
-        
-                            } else if (pilihanSub == 2){
+
+                            } else if (pilihanSub == 2) {
                                 // Pencarian dengan Ekspansi Kofaktor
 
                                 double det = Determinan.DeterminanKofaktor(m);
 
-                                String metode = "Berdasarkan kofaktor, nilai determinannya adalah: " + Primitive.round2String(det);
+                                String metode = "Berdasarkan kofaktor, nilai determinannya adalah: "
+                                        + Primitive.round2String(det);
                                 System.out.println(metode);
-    
+
                                 boolean pilFile = File_Writer.apaMasukFile();
-    
-                                if (pilFile){
+
+                                if (pilFile) {
                                     File_Writer.writeDeterminan(m, metode);
                                 }
 
                                 break;
-        
+
                             } else {
                                 System.out.println("Masukkan tidak valid, harap ulangi!");
                                 // Pesan yang dikeluarkan saat input tidak valid
-        
+
                             }
                         }
                     } else {
@@ -347,17 +352,16 @@ public class Main {
 
                 }
 
-            } else if (Pilihan == 3){
+            } else if (Pilihan == 3) {
                 // Jika dipilih matriks balikan
 
-                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
+                if (pilInput == 1) {
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
-                
+
                     // Melakukan input pada dimensi matriks
                     int dimensi = Input.inputDimensi();
-
 
                     // Input matriks:
                     double[][] m = new double[dimensi][dimensi];
@@ -365,131 +369,130 @@ public class Main {
                     // menerima masukan dari keyboard untuk membentuk matriks
                     // matriks akan tersimpan dalam variabel "matriks"
 
+                    if (Determinan.DeterminanKofaktor(m) == 0) {
 
-                    if (Determinan.DeterminanKofaktor(m)==0){
-                        
                         String metode = "Matriks tidak memiliki balikan karena nilai determinan 0";
                         System.out.println(metode);
 
                         boolean pilFile = File_Writer.apaMasukFile();
-                        
+
                         if (pilFile) {
                             File_Writer.writeInverse(m, metode, null, false, false, null, null);
                         }
 
                     } else {
-                    
-                    while (true){
 
-                        // Melakukan pengulangan input sampai input valid
-                        menu.tampilanSubMenu3();
-                        System.out.print("\n>> Pilihan sub: ");
-                        int pilihanSub = Input.pil();
+                        while (true) {
 
-                        if (pilihanSub == 1){
-                            // Metode adjoint
+                            // Melakukan pengulangan input sampai input valid
+                            menu.tampilanSubMenu3();
+                            System.out.print("\n>> Pilihan sub: ");
+                            int pilihanSub = Input.pil();
 
-                            System.out.println("Matriks kofaktornya adalah: ");
-                            double[][] kofaktor = Balikan.kofaktorMatriks(m);
-                            Primitive.displayMatrix(kofaktor);
+                            if (pilihanSub == 1) {
+                                // Metode adjoint
 
-                            System.out.println("Matriks adjoinnya adalah: ");
-                            double[][] adjoin = Balikan.transpose(kofaktor);
-                            Primitive.displayMatrix(adjoin);
+                                System.out.println("Matriks kofaktornya adalah: ");
+                                double[][] kofaktor = Balikan.kofaktorMatriks(m);
+                                Primitive.displayMatrix(kofaktor);
 
-                            String metode = "Nilai inverse berdasarkan metode adjoint adalah: ";
-                            System.out.println(metode);
-                            double[][] balikan = Balikan.balikanKofaktor(m);
-                            // Saat ini matriks balikan sudah didapatkan
+                                System.out.println("Matriks adjoinnya adalah: ");
+                                double[][] adjoin = Balikan.transpose(kofaktor);
+                                Primitive.displayMatrix(adjoin);
 
-                            // Cetak matriks
-                            Primitive.displayMatrix(balikan);
+                                String metode = "Nilai inverse berdasarkan metode adjoint adalah: ";
+                                System.out.println(metode);
+                                double[][] balikan = Balikan.balikanKofaktor(m);
+                                // Saat ini matriks balikan sudah didapatkan
 
-                            boolean pilFile = File_Writer.apaMasukFile();
+                                // Cetak matriks
+                                Primitive.displayMatrix(balikan);
 
-                            if (pilFile) {
-                                File_Writer.writeInverse(m, metode, balikan, true, true, kofaktor, adjoin);
+                                boolean pilFile = File_Writer.apaMasukFile();
+
+                                if (pilFile) {
+                                    File_Writer.writeInverse(m, metode, balikan, true, true, kofaktor, adjoin);
+                                }
+
+                                break;
+
+                            } else if (pilihanSub == 2) {
+                                // Metode Identitas
+                                System.out.println("Matriks awalnya adalah: ");
+                                double[][] mAwal = new double[m.length][m[0].length * 2];
+                                double[][] identitas = new double[m.length][m[0].length];
+                                mAwal = Primitive.merge(m, identitas);
+                                Primitive.displayMatrix(mAwal);
+                                System.out.println("Matriks akhirnya adalah: ");
+                                double[][] mAkhir = new double[m.length][m[0].length * 2];
+                                double[][] mSolve = new double[m.length][m[0].length];
+                                mSolve = InverseMatriksOBE.inverseMatrixOBE(m);
+                                mAkhir = Primitive.merge(identitas, mSolve);
+                                Primitive.displayMatrix(mAkhir);
+
+                                String metode = "Maka balikan dari matriks m berdasarkan teori identitas adalah ";
+                                System.out.println(metode);
+                                Primitive.displayMatrix(mSolve);
+
+                                boolean pilFile = File_Writer.apaMasukFile();
+
+                                if (pilFile) {
+                                    File_Writer.writeInverse(m, metode, mSolve, true, false, mAwal, mAkhir);
+                                }
+                                break;
+
+                            } else {
+                                System.out.println("Masukan tidak valid, harap ulangi!");
+                                // Pesan yang dikeluarkan saat input tidak valid
+                                Menu.batas();
+
                             }
-
-                            break;
-
-                        } else if (pilihanSub == 2) {
-                            // Metode Identitas
-                            System.out.println("Matriks awalnya adalah: ");
-                            double[][] mAwal = new double[m.length][m[0].length * 2];
-                            double[][] identitas = new double[m.length][m[0].length];
-                            mAwal = Primitive.merge(m, identitas);
-                            Primitive.displayMatrix(mAwal);
-                            System.out.println("Matriks akhirnya adalah: ");
-                            double[][] mAkhir = new double[m.length][m[0].length * 2];
-                            double[][] mSolve = new double[m.length][m[0].length];
-                            mSolve = InverseMatriksOBE.inverseMatrixOBE(m);
-                            mAkhir = Primitive.merge(identitas, mSolve);
-                            Primitive.displayMatrix(mAkhir);
-
-                            String metode = "Maka balikan dari matriks m berdasarkan teori identitas adalah ";
-                            System.out.println(metode);
-                            Primitive.displayMatrix(mSolve);
-
-                            boolean pilFile = File_Writer.apaMasukFile();
-
-                            if (pilFile) {
-                                File_Writer.writeInverse(m, metode, mSolve, true, false, mAwal, mAkhir);
-                            }
-                            break;
-                            
-                        } else {
-                            System.out.println("Masukan tidak valid, harap ulangi!");
-                            // Pesan yang dikeluarkan saat input tidak valid
-                            Menu.batas();
 
                         }
 
                     }
 
-                }
-
-                } else if (pilInput == 2){
+                } else if (pilInput == 2) {
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     String file = Input.read();
                     double[][] m = Input.readMatrix(file);
-                    
-                    if (m != null){
+
+                    if (m != null) {
 
                         Menu.batas();
-    
-                        if ((Determinan.DeterminanKofaktor(m)==0) || (!Primitive.isSquare(m))){
+
+                        if ((Determinan.DeterminanKofaktor(m) == 0) || (!Primitive.isSquare(m))) {
                             System.out.println("Matriks tidak memiliki balikan karena nilai determinan 0");
                             Menu.batas();
 
                         } else {
-                        
-                            while (true){
-        
+
+                            while (true) {
+
                                 // Melakukan pengulangan input sampai input valid
                                 menu.tampilanSubMenu3();
                                 System.out.print("\n>> Pilihan sub: ");
                                 int pilihanSub = Input.pil();
-        
-                                if (pilihanSub == 1){
+
+                                if (pilihanSub == 1) {
                                     // Metode adjoint
                                     Menu.batas();
                                     System.out.println("Matriks kofaktornya adalah: ");
                                     double[][] kofaktor = Balikan.kofaktorMatriks(m);
                                     Primitive.displayMatrix(kofaktor);
-        
+
                                     System.out.println("Matriks adjoinnya adalah: ");
                                     double[][] adjoin = Balikan.transpose(kofaktor);
                                     Primitive.displayMatrix(adjoin);
-        
+
                                     System.out.println("Nilai inverse berdasarkan metode matriks balikan adalah: ");
                                     double[][] balikan = Balikan.balikanKofaktor(m);
                                     // Saat ini matriks balikan sudah didapatkan
-        
+
                                     // Cetak matriks
                                     Primitive.displayMatrix(balikan);
                                     Menu.batas();
-        
+
                                     break;
                                 } else if (pilihanSub == 2) {
                                     // Metode Identitas
@@ -506,30 +509,30 @@ public class Main {
                                     Primitive.displayMatrix(mAkhir);
                                     System.out.println("Maka balikan dari matriks m adalah: ");
                                     Primitive.displayMatrix(mSolve);
-        
+
                                     break;
-                                    
+
                                 }
                             }
-                        } 
+                        }
                     } else {
                         System.out.println("Matriks tidak ditemukan atau tidak ada");
                     }
                 }
-            
-            } else if (Pilihan == 4){
+
+            } else if (Pilihan == 4) {
                 // Jika dipilih Interpolasi Polinom
 
-                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
-                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
+                if (pilInput == 1) {
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
                     double[][] m = Input.inputPolasi();
                     double x = Input.taksirPolasi();
-                    
+
                     String metode = "Berdasarkan interpolasi polinom, didapatkan persamaan sebagai berikut:";
                     System.out.println(metode);
-                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x)); 
+                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x));
 
                     boolean pilFile = File_Writer.apaMasukFile();
 
@@ -537,8 +540,7 @@ public class Main {
                         File_Writer.writePolinom(m, Interpolasipolinom.interpolinom(m, x));
                     }
 
-
-                } else if (pilInput == 2){
+                } else if (pilInput == 2) {
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     String file = Input.read();
                     double[][] m = Input.readMatrix(file);
@@ -546,7 +548,7 @@ public class Main {
 
                     String metode = "Berdasarkan interpolasi polinom, didapatkan persamaan sebagai berikut:";
                     System.out.println(metode);
-                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x)); 
+                    Primitive.displayHasil(Interpolasipolinom.interpolinom(m, x));
 
                     boolean pilFile = File_Writer.apaMasukFile();
 
@@ -555,13 +557,13 @@ public class Main {
                     }
                 }
 
-            } else if (Pilihan == 5){
+            } else if (Pilihan == 5) {
                 // Jika dipilih Interpolasi Bicubic
 
-                // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
-                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */ 
+                if (pilInput == 1) {
+                    /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
                     System.out.println("Silahkan masukkan matriks berdimensi 4 x 4");
                     double[][] m = Input.inputMatriks(4, 4);
 
@@ -570,16 +572,18 @@ public class Main {
                     double[] titik = Input.inputTitik();
 
                     double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
-                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah " + Primitive.round2String(hasil);
+                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik ("
+                            + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah "
+                            + Primitive.round2String(hasil);
                     System.out.println(fin);
-                    
+
                     boolean pilFile = File_Writer.apaMasukFile();
 
                     if (pilFile) {
                         File_Writer.writeBikubik(m, titik[0], titik[1], hasil, fin);
                     }
 
-                } else if (pilInput == 2){
+                } else if (pilInput == 2) {
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     String file = Input.read();
                     double[][] m = Input.readMatrix(file);
@@ -589,7 +593,9 @@ public class Main {
                     double[] titik = Input.inputTitik();
 
                     double hasil = InterpolasiBicubic.solve(m, titik[0], titik[1]);
-                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik (" + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah " + Primitive.round2String(hasil);
+                    String fin = "Berdasarkan interpolasi bikubik, nilai pada titik ("
+                            + Primitive.round2String(titik[0]) + " , " + Primitive.round2String(titik[1]) + ") adalah "
+                            + Primitive.round2String(hasil);
                     System.out.println(fin);
 
                     boolean pilFile = File_Writer.apaMasukFile();
@@ -600,22 +606,48 @@ public class Main {
 
                 }
 
-
-            } else if (Pilihan == 6){
+            } else if (Pilihan == 6) {
                 // Jika dipilih Regresi Linier berganda
 
-                 // Melakukan pilihan input antara  menginput dengan KEYBOARD atau dari FILE
+                // Melakukan pilihan input antara menginput dengan KEYBOARD atau dari FILE
                 int pilInput = Input.pilihanInput();
-                if (pilInput == 1){
+                if (pilInput == 1) {
+                    double[][] matrixregresi = Input.inputregresi();
+                    double[][] hasil = Gauss.gauss(matrixregresi);
+                    if (!(Gauss.checksolusi(hasil))) {
+                        System.out.println("Matriks tidak bisa dikerjakan !");
+                    } else {
+                        double hasilfx[] = Gauss.satuSolusiDouble(hasil);
+                        System.out.println("Masukkan Nilai x yang akan ditaksir fungsinya!");
+                        double sum = Input.inputhasilFX(hasilfx);
+                        String metode = "Berdasarkan regresi linear berganda, didapatkan persamaan sebagai berikut:";
+                        System.out.println(metode);
+                        System.out.println((Multiplyregression.multiplyRegression(matrixregresi))[0]);
+                        System.out.println("f(x) = " + sum);
+                    }
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
-                    // ...  
-                } else if (pilInput == 2){
+                    // ...
+                } else if (pilInput == 2) {
+                    String file = Input.read();
+                    double[][] m = Input.readMatrix(file);
+                    double[][] hasil = Gauss.gauss(m);
+                    if (!(Gauss.checksolusi(hasil))) {
+                        System.out.println("Matriks tidak bisa dikerjakan !");
+                    } else {
+                        double hasilfx[] = Gauss.satuSolusiDouble(hasil);
+                        System.out.println("Masukkan Nilai x yang akan ditaksir fungsinya!");
+                        double sum = Input.inputhasilFX(hasilfx);
+                        String metode = "Berdasarkan regresi linear berganda, didapatkan persamaan sebagai berikut:";
+                        System.out.println(metode);
+                        System.out.println((Multiplyregression.multiplyRegression(m))[0]);
+                        System.out.println("f(x) = " + sum);
+                    }
+
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
                     // ...
                 }
 
-
-            } else if (Pilihan == 7){
+            } else if (Pilihan == 7) {
                 System.out.println("|||||||||||||   |||     |||       ||||||       ||||||   |||   |||  |||| ");
                 System.out.println("     |||        |||     |||      |||  |||      ||| |||  |||   ||| |||   ");
                 System.out.println("     |||        |||||||||||     ||||||||||     |||  ||| |||   ||||||    ");
@@ -628,26 +660,16 @@ public class Main {
                 System.out.println("     |||        |||     |||   |||     |||  ");
                 System.out.println("     |||        |||||||||||   |||||||||||  ");
 
-
-                break; 
+                break;
                 // Keluar loop dan program selesai
 
-                
             } else {
                 System.out.println("Masukan tidak valid, harap ulangi!");
                 // Pesan yang dikeluarkan saat input tidak valid
 
             }
-        
-        }
 
+        }
 
     }
 }
-
-
-
-
-
-
-
