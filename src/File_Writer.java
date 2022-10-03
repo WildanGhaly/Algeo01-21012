@@ -291,4 +291,42 @@ public class File_Writer extends Input {
             }
         }
     }
+
+    public static void writeRegresi(double[][] m, String[] solusi) {
+        /*
+         * Fungsi untuk menulis hasil regresi linier berganda dalam file
+         * (m) adalah matriks awal
+         * (solusi) adalah solusi dari regresi linier berganda terhadap m
+         */
+        while (true) {
+            try {
+                System.out.println("Masukkan nama file yang ingin dibuat: ");
+                System.out.print(">> ");
+                String namaFile = scan.next();
+                String address = "../test/output/" + namaFile;
+                FileWriter writer = new FileWriter(address);
+                writer.write("Diberikan matriks berikut\n");
+
+                for (int i = 0; i < m.length; i++) {
+                    writer.append(Primitive.round2String(m[i][0]) + "");
+                    for (int j = 1; j < m[0].length; j++) {
+                        writer.append(" " + Primitive.round2String(m[i][j]));
+                    }
+                    writer.append("\n");
+                }
+
+                writer.append("\nBerdasarkan regresi linier berganda, didapatkan persamaan berikut:\n");
+
+                for (int i = 0; i < solusi.length; i++) {
+                    writer.append(solusi[i]);
+                }
+
+                writer.close();
+                break;
+
+            } catch (IOException e) {
+                System.out.println("Error ditemukan");
+            }
+        }
+    }
 }

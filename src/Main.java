@@ -618,12 +618,21 @@ public class Main {
                         System.out.println("Matriks tidak bisa dikerjakan !");
                     } else {
                         double hasilfx[] = Gauss.satuSolusiDouble(hasil);
+                        String writerreg[] = new String[2];
                         System.out.println("Masukkan Nilai x yang akan ditaksir fungsinya!");
                         double sum = Input.inputhasilFX(hasilfx);
                         String metode = "Berdasarkan regresi linear berganda, didapatkan persamaan sebagai berikut:";
                         System.out.println(metode);
                         System.out.println((Multiplyregression.multiplyRegression(matrixregresi))[0]);
-                        System.out.println("f(x) = " + sum);
+                        System.out.println("Hasil taksiran f(x) = " + sum);
+                        writerreg[0] = (Multiplyregression.multiplyRegression(matrixregresi))[0];
+                        writerreg[1] = ("\nHasil tafsiran f(x) = " + sum);
+
+                        boolean pilFile = File_Writer.apaMasukFile();
+
+                        if (pilFile) {
+                            File_Writer.writeRegresi(matrixregresi, writerreg);
+                        }
                     }
                     /* Jika pilihan input 1 maka akan diminta masukan melalui keyboard */
                     // ...
@@ -635,12 +644,22 @@ public class Main {
                         System.out.println("Matriks tidak bisa dikerjakan !");
                     } else {
                         double hasilfx[] = Gauss.satuSolusiDouble(hasil);
+                        String writerreg[] = new String[2];
                         System.out.println("Masukkan Nilai x yang akan ditaksir fungsinya!");
                         double sum = Input.inputhasilFX(hasilfx);
                         String metode = "Berdasarkan regresi linear berganda, didapatkan persamaan sebagai berikut:";
                         System.out.println(metode);
                         System.out.println((Multiplyregression.multiplyRegression(m))[0]);
-                        System.out.println("f(x) = " + sum);
+                        System.out.println("Hasil taksiran f(x) = " + sum);
+
+                        writerreg[0] = (Multiplyregression.multiplyRegression(m))[0];
+                        writerreg[1] = ("\nHasil taksiran f(x) = " + sum);
+
+                        boolean pilFile = File_Writer.apaMasukFile();
+
+                        if (pilFile) {
+                            File_Writer.writeRegresi(m, writerreg);
+                        }
                     }
 
                     /* Jika pilihan input 2 maka akan diminta nama file yang ingin diolah */
