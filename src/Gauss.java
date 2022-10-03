@@ -133,8 +133,8 @@ public class Gauss {
         return m;
     }
 
-    public static String[] satuSolusi (double[][] m){
-        /* 
+    public static String[] satuSolusi(double[][] m) {
+        /*
          * Menerima matriks effektif.
          * Prekondisi:
          * - Matriks (m) memiliki baris = kolom - 1
@@ -142,33 +142,33 @@ public class Gauss {
          */
         int row = m.length;
         int col = m[0].length;
-        String[] hasilS = new String[col-1];
-        double[] hasilD = new double[col-1];
-        for (int i = row-1; i >= 0; i--){
+        String[] hasilS = new String[col - 1];
+        double[] hasilD = new double[col - 1];
+        for (int i = row - 1; i >= 0; i--) {
             // Pencarian solusi dimulai dari belakang
-            hasilD[i] = m[i][col-1];
-            for (int j = (col-2); j > i; j--){
+            hasilD[i] = m[i][col - 1];
+            for (int j = (col - 2); j > i; j--) {
                 hasilD[i] = hasilD[i] - (m[i][j] * hasilD[j]);
             }
             // Solusi dalam bentuk string di store di HasilS
-            hasilS[i] = "x" + (i+1) + " = " + Primitive.round2String(hasilD[i]);
+            hasilS[i] = "x" + (i + 1) + " = " + Primitive.round2String(hasilD[i]);
         }
 
         return hasilS;
     }
 
-    public static double[] satuSolusiDouble (double[][] m){
-        /* 
+    public static double[] satuSolusiDouble(double[][] m) {
+        /*
          * Menerima matriks efektif.
          * Sama seperti method satuSolusi, hanya saja keluarannya array of double
          */
         int row = m.length;
         int col = m[0].length;
-        double[] hasil = new double[col-1];
-        for (int i = row-1; i >= 0; i--){
+        double[] hasil = new double[col - 1];
+        for (int i = row - 1; i >= 0; i--) {
             // Pencarian solusi dimulai dari belakang
-            hasil[i] = m[i][col-1];
-            for (int j = (col-2); j > i; j--){
+            hasil[i] = m[i][col - 1];
+            for (int j = (col - 2); j > i; j--) {
                 hasil[i] = hasil[i] - (m[i][j] * hasil[j]);
             }
         }
@@ -176,8 +176,8 @@ public class Gauss {
         return hasil;
     }
 
-    public static double[] solveSPLdouble (double[][] m){
-        /* 
+    public static double[] solveSPLdouble(double[][] m) {
+        /*
          * Menerima matriks m lalu mengembalikan solusinya dalam array of double
          */
         m = gauss(m);
@@ -185,39 +185,75 @@ public class Gauss {
         return satuSolusiDouble(mEff);
     }
 
-    public static String[] solveSPL (double[][] m) {
-        /* 
+    public static String[] solveSPL(double[][] m) {
+        /*
          * Menyelesaikan SPL hasil eliminasi gauss
          */
         int row;
         int col;
-        String[] noSol = {"Tidak ada solusi"};
+        String[] noSol = { "Tidak ada solusi" };
 
-        if (Primitive.noSolusi(m)){
+        if (Primitive.noSolusi(m)) {
             return noSol;
         } else {
             double[][] mEff = Primitive.mEff(m);
             row = mEff.length;
             try {
-                col = mEff[0].length;    
-            } catch (ArrayIndexOutOfBoundsException err){
+                col = mEff[0].length;
+            } catch (ArrayIndexOutOfBoundsException err) {
                 col = 0;
             }
 
-            if (row == (col-1)){
+            if (row == (col - 1)) {
                 // Baris efektif SAMA dengan kolom efektif dikurang satu
                 // Maka solusi satu
                 return satuSolusi(mEff);
 
-            } else if (row < col - 1){
+            } else if (row < col - 1) {
                 // Baris efektif KURANG dari kolom efektif dikurang satu
                 // Maka solusinya banyak T_T
                 return SolusiBanyak.solusiBanyak(mEff);
-                
+
             } else {
                 // Baris efektif LEBIH dari kolom efektif dikurang satu
                 // Maka tidak ada solusi
                 return noSol;
+            }
+        }
+    }
+
+    public static boolean checksolusi(double[][] m) {
+        /*
+         * Menyelesaikan SPL hasil eliminasi gauss
+         */
+        int row;
+        int col;
+
+        if (Primitive.noSolusi(m)) {
+            return false;
+        } else {
+            double[][] mEff = Primitive.mEff(m);
+            row = mEff.length;
+            try {
+                col = mEff[0].length;
+            } catch (ArrayIndexOutOfBoundsException err) {
+                col = 0;
+            }
+
+            if (row == (col - 1)) {
+                // Baris efektif SAMA dengan kolom efektif dikurang satu
+                // Maka solusi satu
+                return true;
+
+            } else if (row < col - 1) {
+                // Baris efektif KURANG dari kolom efektif dikurang satu
+                // Maka solusinya banyak T_T
+                return false;
+
+            } else {
+                // Baris efektif LEBIH dari kolom efektif dikurang satu
+                // Maka tidak ada solusi
+                return false;
             }
         }
     }
