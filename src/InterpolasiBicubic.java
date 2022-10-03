@@ -123,6 +123,16 @@ public class InterpolasiBicubic {
         return sum;
     }
 
+    public static double solver (double x, double y, double[][] yKotak){
+        /* 
+         * Penyelesaian bikubik
+         */
+        double[][] Xp = interpolasiBikubik();
+        double[][] a = cariA(Xp, yKotak);
+        double hasil = solve(a, x, y);
+        return hasil;
+    }
+
 }
 
 
