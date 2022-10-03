@@ -77,8 +77,17 @@ public class Main {
 
                         } else if (pilihanSub == 3) {
                             // Jika dipilih metode matriks balikan
-                            System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
-                            InverseMatriksSPL.inverseMatrixSPL(m);
+                            String metode = "Berdasarkan inverse matriks, solusinya adalah: ";
+                            System.out.println(metode);
+                            
+                            String[] hasil = InverseMatriksSPL.inverseMatrixSPL(m);
+
+                            Primitive.displayHasil(hasil);
+
+                            boolean pilFile = File_Writer.apaMasukFile();
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, null, false, hasil, metode);
+                            }
 
                             break;
 
@@ -176,8 +185,18 @@ public class Main {
 
                         } else if (pilihanSub == 3) {
                             // Jika dipilih metode matriks balikan
-                            System.out.println("Berdasarkan inverse matriks, solusinya adalah: ");
-                            InverseMatriksSPL.inverseMatrixSPL(m);
+                            String metode = "Berdasarkan inverse matriks, solusinya adalah: ";
+                            System.out.println(metode);
+                            
+                            String[] hasil = InverseMatriksSPL.inverseMatrixSPL(m);
+
+                            Primitive.displayHasil(hasil);
+
+                            boolean pilFile = File_Writer.apaMasukFile();
+                            if (pilFile) {
+                                File_Writer.writeSPL(m, null, false, hasil, metode);
+                            }
+
 
                             break;
 
